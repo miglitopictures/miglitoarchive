@@ -1,5 +1,5 @@
 * {
-    --main-color: rgb(70, 191, 80);
+    --main-color: rgb(244, 163, 0);
 
 
     margin: 0px;
@@ -51,28 +51,23 @@ li button {
     line-height: 1;
     text-transform: uppercase;
 }
-/* 
 
-li button:hover {
-    background-color: rgb(64, 162, 72);
-} */
-
-#work-container {
+main {
     padding-top: 40px;
 
-    background-color: rgb(236, 236, 236);
+    background-color: rgb(198, 198, 198);
 
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-#work-container div {
+.work-preview {
     display: flex;
     flex-direction: column;
 }
 
-#work-container video {
+.work-preview video {
     border: rgb(0, 0, 0) 2px solid;
     
     box-sizing: border-box;
@@ -81,6 +76,12 @@ li button:hover {
     object-fit: cover;
     display: block;
     transition: max-height 1.6s ease;
+}
+
+dt{
+    font-size: 10pt;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
 /* Initial hidden state */

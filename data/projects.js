@@ -95,7 +95,7 @@ export const works = {
             "design":["Lucas Noel", "Deco Moreira", "Fernando Villela", author],
             "project management": ["Fábio Neves"],
             "account management": ["Ana Luisa Rodrigues"],
-            "post production": ["Marcio Sal"]
+            "post-production direction": ["Marcio Sal"]
         }
     },
 
@@ -122,4 +122,3 @@ export const works = {
         }
     },
 }
-
