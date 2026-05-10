@@ -14,10 +14,10 @@ for (const key in works){
 
     const work = works[key];
 
-    let categoriesHtlm = '';
+    let categoriesHtml = '';
 
     work.categories.forEach((categorie) => {
-        categoriesHtlm += `<li><button>${dict.categories[categorie][lang]}</button></li>`
+        categoriesHtml += `<li><button>${dict.categories[categorie][lang]}</button></li>`
     })
 
 
@@ -25,16 +25,18 @@ for (const key in works){
         <div class="fade-in-element">
             <h2>${work.title}</h2>
             <time datetime="${work.year}">${work.year}</time>
-            <video
-                ${work.preview_video ? `src="${work.preview_video}"` : ''}
-                poster="${work.preview_thumb}"
-                muted
-                loop
-                playsinline
-                preload="metadata">
-            </video>
+            <a href="/${key}">
+                <video
+                    ${work.preview_video ? `src="${work.preview_video}"` : ''}
+                    poster="${work.preview_thumb}"
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata">
+                </video>
+            </a>
             <ul>
-                ${categoriesHtlm}
+                ${categoriesHtml}
             </ul>
         </div>
     `

@@ -1,5 +1,6 @@
 export function parseRoute() {
     const path = window.location.pathname;
+
     const segments = path.split('/')
         .filter(seg => seg !== "" && seg !== "index.html");
 
@@ -32,12 +33,10 @@ export function handleRouting() {
             break;
         case 'project':
             // 1. Identify which list to look in
-            const projectData = works[route.slug];
+            // const projectData = works[route.slug];
 
             if (projectData) {
-                Renderer.renderProjectPage(appContainer, projectData, lang);
-                // Bonus: Update the Browser Tab Title
-                document.title = `${projectData.title[lang]} | BE A STEREOTYPE`;
+
             } else {
                 // If the slug doesn't exist in our JS, show 404
                 appContainer.innerHTML = `<h1>Project Not Found</h1>`;
