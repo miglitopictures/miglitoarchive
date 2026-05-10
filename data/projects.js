@@ -121,4 +121,27 @@ export const works = {
             "project management": ["Consoante Soma de Sons"]
         }
     },
+
+    "kimura": {
+        title:"Kimura Sans",
+        year: 2024,
+        studio: "NOO",
+        client: "Plau",
+        categories: ["3d", "motion", "graphic design"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "account management": ["Antonio Carvalho"],
+            "executive production": ["Kathlyn Giaccomini"],
+            "art direction":["Beatriz de Andrade"],
+            "direction": ["Marcio Sal"],
+            "copywriting": ["Gabriel Pardal", "Giovanna Ferrari"],
+            "design":["Louise Favilla", "Beatriz de Andrade", "Fernando Villela", author],
+            "animation": ["Fernando Villela", author],
+            "project management": ["Consoante Soma de Sons"]
+        }
+    },
 }
