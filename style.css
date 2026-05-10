@@ -1,0 +1,98 @@
+* {
+    --main-color: rgb(70, 191, 80);
+
+
+    margin: 0px;
+    padding: 0px;
+
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    max-width: 600px;
+    margin: 0px auto;
+}
+
+nav {
+    overflow: visible;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: inherit; 
+    margin: 0 auto; /* Centers the fixed bar on the screen */
+
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+nav a{
+    color: black;
+    text-decoration: none;
+    font-size: 20pt;
+}
+
+li {
+    display: inline;
+    list-style: none;
+    padding-right: 5px;
+}
+
+li button {
+    background-color: var(--main-color);
+    border: 0px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+
+#work-container {
+    padding-top: 40px;
+
+    background-color: rgb(236, 236, 236);
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#work-container div {
+    display: flex;
+    flex-direction: column;
+}
+
+#work-container video {
+    border: rgb(0, 0, 0) 2px solid;
+    
+    box-sizing: border-box;
+    width: 100%;       /* Ensure image fills its grid cell */
+    max-height: 150px; /* Set your starting "collapsed" height */
+    object-fit: cover;
+    display: block;
+    transition: max-height 1.6s ease;
+}
+
+#work-container video:hover {
+        max-height: 300px; /* Set your starting "collapsed" height */
+
+}
+
+/* Initial hidden state */
+.fade-in-element {
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+
+/* State when visible */
+.fade-in-element.is-visible {
+  opacity: 1;
+}
