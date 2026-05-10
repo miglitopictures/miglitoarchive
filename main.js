@@ -155,7 +155,7 @@ function make(path){
                 ${creditsHtml}
             </article>
         `;
-
+        // UPDATE META
         document.title = `${work.title} | miglito archive`;
 
     }
