@@ -9,7 +9,7 @@ export const works = {
         categories: ["design", "motion"],
 
         preview_thumb: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/750683240721445.6944516041736.png",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1778525393/preview_histerica_zkc4v1.mp4",
         preview_alt: "Newspaper cut-out of a woman subtly smilling with the written word 'Histéca', in vivid lime green, centered in the frame.",
         
         credits:{
@@ -31,7 +31,7 @@ export const works = {
 
     "lembrete": {
         title:"Lembrete",
-        year: 2023,
+        year: 2022,
         studio: "NOO",
         client: "NOO",
         categories: ["3d", "animation", "short film"],
@@ -39,7 +39,16 @@ export const works = {
         preview_thumb: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/1bcaab159061067.63977d30ed321.png",
         preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/f_auto,q_auto,w_800/v1770302765/projects/tap-to-pay-zoop/y1droueioptnwkagby0j.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
-    
+        
+        awards:{
+            "Latin America Design Awards":{
+                year: 2022,
+                prize: "Silver",
+                categorie: "3D Animation",
+                link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2023/animation/lembrete-63acd09b"
+            },
+        },
+
         credits:{
             "creative direction": ["Judd Buchanan", author],
             "storyboarding": [author],
@@ -60,6 +69,15 @@ export const works = {
         preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
     
+        awards:{
+            "Latin America Design Awards":{
+                year: 2023,
+                prize: "Bronze",
+                categorie: "Graphic Design",
+                link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2024/graphic-design/stonecamp-2023-9e97e64b"
+            },
+        },
+
         credits:{
             "account management": ["Antonio Carvalho"],
             "executive production": ["Kathlyn Giaccomini"],
@@ -76,7 +94,7 @@ export const works = {
 
     "tap-to-pay": {
         title:"Tap to Pay",
-        year: 2023, 
+        year: 2025, 
         studio: "NOO",
         client: "Zoop",
         categories: ["3d", "motion", "graphic design"],
@@ -100,29 +118,6 @@ export const works = {
     },
 
     "kimura-sans": {
-        title:"Kimura Sans",
-        year: 2024,
-        studio: "NOO",
-        client: "Plau",
-        categories: ["3d", "motion", "graphic design"],
-
-        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
-        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
-
-        credits:{
-            "account management": ["Antonio Carvalho"],
-            "executive production": ["Kathlyn Giaccomini"],
-            "art direction":["Beatriz de Andrade"],
-            "direction": ["Marcio Sal"],
-            "copywriting": ["Gabriel Pardal", "Giovanna Ferrari"],
-            "design":["Louise Favilla", "Beatriz de Andrade", "Fernando Villela", author],
-            "animation": ["Fernando Villela", author],
-            "project management": ["Consoante Soma de Sons"]
-        }
-    },
-
-    "kimura": {
         title:"Kimura Sans",
         year: 2024,
         studio: "NOO",

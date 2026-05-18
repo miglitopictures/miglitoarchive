@@ -1,5 +1,5 @@
 * {
-    --main-color: rgb(255, 153, 0);
+    --main-color: rgb(187, 255, 0);
 
 
     margin: 0px;
@@ -30,6 +30,8 @@ nav {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+
+    /* opacity: 0; */
 }
 
 nav a{
@@ -52,17 +54,25 @@ li button {
 }
 
 main {
-    padding-top: 40px;
+    padding-top: 35px;
 
     background-color: rgb(198, 198, 198);
 
-    display: flex;
+    /* possibly make it flex again to have gap? */
+    /* display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 30px; */
+}
+
+h2 {
+    position: sticky;
+    top: 35px;
+    background-color: rgb(198, 198, 198);
+
 }
 
 video {
-    border: rgb(0, 0, 0) 2px solid;
+    /* border: rgb(0, 0, 0) 2px solid; */
     
     box-sizing: border-box;
     width: 100%;

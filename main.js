@@ -14,7 +14,7 @@ const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('is-visible'); // Fade in
-    //   observer.unobserve(entry.target);
+      observer.unobserve(entry.target);
     } else {
         entry.target.classList.remove('is-visible');
     }
@@ -79,7 +79,7 @@ function make(path){
             observer.observe(el);
             let video = el.querySelector("video");
 
-            // Play video
+            // // Play video
             video.addEventListener('mouseenter', () => {
                 video.play().catch(err => {
                     console.log("Playback interrupted");
@@ -87,12 +87,12 @@ function make(path){
                 });
             });
 
-            // Pause video
+            // // Pause video
             video.addEventListener('mouseleave', () => {
                 video.pause(); 
                 // video.currentTime = 0; Optional: Resets video to start
             });
-        });
+        });        
 
         // UPDATE META
         document.title = 'miglito archive';
