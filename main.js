@@ -52,6 +52,7 @@ function make(path){
                     <a href="/${key}" aria-label="View project: ${work.title}">
                         <video
                             ${work.preview_video ? `src="${work.preview_video}"` : ''}
+                            aria-label="${work.preview_alt}"
                             poster="${work.preview_thumb}"
                             muted
                             loop
