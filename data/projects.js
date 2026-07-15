@@ -58,6 +58,32 @@ export const works = {
         }
     },
 
+    "tap-to-pay": {
+        title:"Tap to Pay",
+        year: 2025, 
+        studio: "NOO",
+        client: "Zoop",
+        categories: ["3d", "motion", "graphic design"],
+
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/f_auto,q_auto,w_800,so_0/v1770302765/projects/tap-to-pay-zoop/y1droueioptnwkagby0j.jpg",
+        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/f_auto,q_auto,w_800/v1770302765/projects/tap-to-pay-zoop/y1droueioptnwkagby0j.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "conception": ["Grupo Sal"],
+            "copywriting": ["Grupo Sal"],
+            "direction": ["Grupo Sal"],
+            "production": ["Grupo Sal"],
+            "animation": ["Fernando Villela", author, "Judd Buchanan"],
+            "art direction":["Deco Moreira", "Lucas Noel"],
+            "design":["Lucas Noel", "Deco Moreira", "Fernando Villela", author],
+            "project management": ["Fábio Neves"],
+            "account management": ["Ana Luisa Rodrigues"],
+            "post-production direction": ["Marcio Sal"]
+        }
+    },
+
+
     "stonecamp23": {
         title:"Stonecamp 23",
         year: 2023,
@@ -92,31 +118,7 @@ export const works = {
         }
     },
 
-    "tap-to-pay": {
-        title:"Tap to Pay",
-        year: 2025, 
-        studio: "NOO",
-        client: "Zoop",
-        categories: ["3d", "motion", "graphic design"],
-
-        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/f_auto,q_auto,w_800,so_0/v1770302765/projects/tap-to-pay-zoop/y1droueioptnwkagby0j.jpg",
-        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/f_auto,q_auto,w_800/v1770302765/projects/tap-to-pay-zoop/y1droueioptnwkagby0j.mp4",
-        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
-
-        credits:{
-            "conception": ["Grupo Sal"],
-            "copywriting": ["Grupo Sal"],
-            "direction": ["Grupo Sal"],
-            "production": ["Grupo Sal"],
-            "animation": ["Fernando Villela", author, "Judd Buchanan"],
-            "art direction":["Deco Moreira", "Lucas Noel"],
-            "design":["Lucas Noel", "Deco Moreira", "Fernando Villela", author],
-            "project management": ["Fábio Neves"],
-            "account management": ["Ana Luisa Rodrigues"],
-            "post-production direction": ["Marcio Sal"]
-        }
-    },
-
+    
     "kimura-sans": {
         title:"Kimura Sans",
         year: 2024,

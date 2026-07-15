@@ -46,7 +46,7 @@ function make(path){
             // ------------ make work preview div--------------
 
             worksHtml += `
-                <article class="project-preview fade-in-element">
+                <article class="project-preview fade-in-element ${work.awards ? 'awarded' : ''}">
                     <h2>${work.title}</h2>
                     <time datetime="${work.year}">${work.year}</time>
                     <a href="/${key}" aria-label="View project: ${work.title}">
