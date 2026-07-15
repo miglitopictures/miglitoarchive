@@ -1,7 +1,11 @@
+## Github Pages Server Simulator##
+
 # um mini servidor que simula o Github Pages
 # redirecionando para "404.html" quando a rota (arquivo) nao eh encontrada.
 
 #criado para testar o gerenciamento de rotas (404.html, index.html) 
+
+# para rodar o site utilizando ele, digite "python3 gh_pages_server.py" no terminal! 
 
 import http.server
 import os
