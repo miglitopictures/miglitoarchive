@@ -13,8 +13,8 @@ const observerOptions = {
 const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible'); // Fade in
-      observer.unobserve(entry.target);
+      entry.target.classList.add('is-visible');
+    //   observer.unobserve(entry.target);
     } else {
         entry.target.classList.remove('is-visible');
     }
@@ -47,7 +47,7 @@ function make(path){
 
             worksHtml += `
                 <article class="project-preview fade-in-element ${work.awards ? 'awarded' : ''}">
-                    <h2>${work.title}</h2>
+                    <h2>${work.title}${work.awards ? '*' : ''}</h2>
                     <time datetime="${work.year}">${work.year}</time>
                     <a href="/${key}" aria-label="View project: ${work.title}">
                         <video
@@ -80,7 +80,7 @@ function make(path){
             observer.observe(el);
             let video = el.querySelector("video");
 
-            // // Play video
+            // Play video
             video.addEventListener('mouseenter', () => {
                 video.play().catch(err => {
                     console.log("Playback interrupted");
@@ -88,7 +88,7 @@ function make(path){
                 });
             });
 
-            // // Pause video
+            // Pause video
             video.addEventListener('mouseleave', () => {
                 video.pause(); 
                 // video.currentTime = 0; Optional: Resets video to start
@@ -136,11 +136,10 @@ function make(path){
 
             creditsHtml += `</dl></section>`
         }
-        
-        // UPDATE DOM
-        app.innerHTML = `
+
+        let projectPageHtml = `
             <article id="project-content">
-                <h2>${work.title}</h2>
+                <h2>${work.title}${work.awards ? '*' : ''}</h2>
                 <time datetime="${work.year}">${work.year}</time>
                 <video
                     ${work.preview_video ? `src="${work.preview_video}"` : ''}
@@ -156,6 +155,9 @@ function make(path){
                 ${creditsHtml}
             </article>
         `;
+        
+        // UPDATE DOM
+        app.innerHTML = projectPageHtml;
         // UPDATE META
         document.title = `${work.title} | miglito archive`;
 

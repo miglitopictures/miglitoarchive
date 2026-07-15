@@ -68,7 +68,7 @@ main {
 
 
 .awarded, .awarded h2{
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(146, 146, 146);
     color: var(--main-color);
 
 }

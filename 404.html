@@ -56,37 +56,37 @@
 
         // REDIRECIONAMOS PARA O HOME COM A RODA ENCODADA
 
-        var numFixedSegments = 0;
+        let numFixedSegments = 0;
 
-        var loc = window.location;
+        let loc = window.location;
         const originalPath = loc.pathname;
 
-        var pathArray = originalPath.split('/');
+        let pathArray = originalPath.split('/');
 
-        var baseArray = pathArray.slice(0, numFixedSegments + 1); // adicionamos 1 pois o segundo parametro de slice() é exclusivo (não inclui item 'end' do array).
-        var routeArray = pathArray.slice(numFixedSegments + 1); // como não especificamos end, pegamos o testo t =odo do array
+        let baseArray = pathArray.slice(0, numFixedSegments + 1); // adicionamos 1 pois o segundo parametro de slice() é exclusivo (não inclui item 'end' do array).
+        let routeArray = pathArray.slice(numFixedSegments + 1); // como não especificamos end, pegamos o testo t =odo do array
 
         // juntamos os pegacos em strings // Ex.(["miglito", "histerica"] vira "miglito/histerica")
-        var basePath = baseArray.join('/');
-        var route = routeArray.join('/');
+        let basePath = baseArray.join('/');
+        let route = routeArray.join('/');
 
-        var encodedRoute = route.replace(/&/g, "~and~"); // substituimos todos os & por ~and~ na rota. (sera revertido no decode do index.html)
+        let encodedRoute = route.replace(/&/g, "~and~"); // substituimos todos os & por ~and~ na rota. (sera revertido no decode do index.html)
 
-        var existingSearchQuery = '';
+        let existingSearchQuery = '';
         if (loc.search){
-            var encodedQuery = loc.search.slice('/').replace(/&/g, "~and~"); // (sera revertido no decode do index.html)
+            let encodedQuery = loc.search.slice('/').replace(/&/g, "~and~"); // (sera revertido no decode do index.html)
             existingSearchQuery = '&' + encodedQuery; // usaremos o & inicial para decode no index.html
         }
 
         // montando origin //
                      //http:               // "miglito.com" ou "username.github.io" ou "localhost"
-        var origin = loc.protocol + '//' + loc.hostname
+        let origin = loc.protocol + '//' + loc.hostname
         if (loc.port) {
             origin = origin + ':' + loc.port;  // adicionamos a :port caso estajamos usando "localhost" -> "http://localhost:8080"
         }
 
         // montando o path final do redirecionamento //
-        var redirectUrl = origin + basePath + '/?/' + encodedRoute + existingSearchQuery + loc.hash;
+        let redirectUrl = origin + basePath + '/?/' + encodedRoute + existingSearchQuery + loc.hash;
 
         // redirecionar (sem deixar no historico)
         loc.replace(redirectUrl);

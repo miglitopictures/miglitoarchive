@@ -26,27 +26,27 @@
 
         // DECODIFICAR A ROTA (404.html redirect)                           __
         // roda apenas se a rota tiver sido encodada por 404.html (site.com/?/)
-        var loc = window.location;
+        let loc = window.location;
 
         // verificamos se a rota foi um redirecionamento de 404 (encoded)
-        var hasEncodedRoute = loc.search.length > 1 && loc.search[1] === '/';
+        let hasEncodedRoute = loc.search.length > 1 && loc.search[1] === '/';
 
         if (hasEncodedRoute) {
             // dispensamos com slice o "?/" (2 caracteres), then split on "&" in case an original
             // query string got bundled in alongside our route
-            var parts = loc.search.slice(2).split('&');
+            let parts = loc.search.slice(2).split('&');
 
             // Undo the "&" escaping done on the 404 page
-            for (var i = 0; i < parts.length; i++) {
+            for (let i = 0; i < parts.length; i++) {
                 parts[i] = parts[i].replace(/~and~/g, '&');
             }
 
             // junta novamente a rota com o originalSearchQuery "route?originalQuery", caso exista search query. caso nao o join() nao coloca nada (array com um item)
-            var decodedPath = parts.join('?');
+            let decodedPath = parts.join('?');
 
-            var basePath = loc.pathname;
+            let basePath = loc.pathname;
 
-            var realUrl = basePath + decodedPath + loc.hash;
+            let realUrl = basePath + decodedPath + loc.hash;
 
             // mudamos o url (que ira consequentemente gerar a pagina correta no main.js)
             window.history.replaceState(null, null, realUrl);

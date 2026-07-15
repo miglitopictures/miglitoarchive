@@ -1,4 +1,4 @@
-## Github Pages Server Simulator##
+## Github Pages Server Simulator ##
 
 # um mini servidor que simula o Github Pages
 # redirecionando para "404.html" quando a rota (arquivo) nao eh encontrada.
