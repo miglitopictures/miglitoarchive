@@ -127,7 +127,7 @@ function make(path){
                 })
 
                 creditsHtml += `
-                    <dt>${dict.roles[role][lang]}</dt>
+                    <dt>${dict.roles[role] ? dict.roles[role][lang] : role}</dt>
                     ${contributorsHtml}
                     
                     `;

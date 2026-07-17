@@ -138,7 +138,314 @@ export const works = {
             "copywriting": ["Gabriel Pardal", "Giovanna Ferrari"],
             "design":["Louise Favilla", "Beatriz de Andrade", "Fernando Villela", author],
             "animation": ["Fernando Villela", author],
-            "project management": ["Consoante Soma de Sons"]
+            "project management": ["Consoante Soma de Sons"] // soud design and music
         }
+    },
+
+    "sesc-jazz": {
+        title:"Sesc Jazz",
+        year: 2021,
+        studio: "Daó",
+        client: "Sesc",
+        categories: ["motion"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "design":["Giovani Castelucci", "Guilherme Vieira", "Regys Lima"],
+            "illustration":["Kika Carvalho"],
+            "printing":["Amarelo Gráfico", "Amanda Navarro"],
+            "mural":["Amarelo Gráfico", "Amanda Navarro"],
+            "motion design": ["Larissa Constantino", author],
+            "web development": ["Grama"],
+        }
+    },
+
+    "sesc-melhores-filmes": {
+        title:"48° Festival Sesc Melhores Filmes",
+        year: 2021,
+        studio: "Giulia Fagundes",
+        client: "Sesc",
+        categories: ["motion"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "visual identity": ["Giulia Fagundes"],
+            "graphic project": ["Giulia Fagundes", "Felipe Regis"],
+            "layout": ["Giulia Fagundes"],
+            "motion design": ["Larissa Constantino", author]
+        }
+    },
+
+    "hungry-giraffe": {
+        title:"Hungry Giraffe",
+        year: 2021,
+        studio: "NOO",
+        client: "NOO",
+        categories: ["game", "ar filter", "programming"],
+
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        awards:{
+            "Effect House Game Jam":{
+                year: 2023,
+                categorie: "Gamemaster Award",
+                link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2024/graphic-design/stonecamp-2023-9e97e64b"
+            },
+        },
+
+        credits:{
+            "game design": ["Judd Buchanan", author],
+            "programming": [author],
+        }
+    },
+
+    "natal-coca-cola": {
+        title:"Natal Coca-Cola",
+        year: 2022,
+        studio: "NOO",
+        client: "Coca-Cola",
+        categories: ["ar filter", "programming"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "account management": ["Antonio Carvalho"],
+            "direction": ["Marcio Sal"],
+            "programming": [author],
+            "animation": [author],
+        }
+    },
+
+    "trident-filter": {
+        title:"Mastica Nuevos Mundos",
+        year: 2022,
+        studio: "NOO",
+        client: "Trident",
+        categories: ["ar filter", "programming"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "account management": ["Ana Luisa Rodrigues"],
+            "art direction": ["Antonio Carvalho"],
+            "direction": ["Marcio Sal"],
+            "executive production": ["Kathlyn Giaccomini"],
+            "programming": [author, "Judd Buchannan", "Cadu Coelho"],
+        }
+    },
+
+
+    "ilha-e-a-rua": {
+        title:"A Ilha e a Rua",
+        year: 2022,
+        studio: "Bebê Biônico",
+        client: "Proa",
+        categories: ["graphic design", "poster"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "design": ["Vick Falcão", author],
+            "typography": ["Vick Falcão"],
+        }
+    },
+
+    "paladar": {
+        title:"Paladar",
+        year: 2022,
+        client: "Mariana Rocha e João Cortez",
+        categories: ["graphic design", "album cover"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "design": ["Vick Falcão", author],
+            "3d": ["Vick Falcão", author],
+            "research": ["Vick Falcão", "Ryan Yves", author],
+        }
+    },
+
+    "apartamento": {
+        title:"Apartamento",
+        year: 2022,
+        client: "João Cortez",
+        categories: ["graphic design", "album cover"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "design": ["Ryan Yves", author],
+        }
+    },
+
+    "ansif": {
+        title:"ANSIF",
+        year: 2026,
+        client: "ANSIF (Articulção Nacional dos Servidores Indígenas da FUNAI)",
+        categories: ["logo design"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "design": ["Vick Falcão", author],
+        }
+    },
+
+    "marcelo-d2": {
+        title:"Manual Prático Do Novo Samba Tradicional, Vol. 2",
+        year: 2026,
+        client: "Marcelo D2",
+        categories: ["motion"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "creative direction": ["Marcelo D2"],
+            "direction of photography": ["Pedro Miceli"],
+            "ad photography": ["Barauna"],
+            "photography assistant": ["Caio Backer", "Guido Wesley", "Felipe Viveiros"],
+            "video direction": ["Cauã Csik"],
+            "animation": ["BE A STEREOTYPE", author],
+            "camera operator": ["Marco Zamberlan", "Tadeu Fidalgo"],
+            "minidv footage": ["Barauna"],
+            "handycam": ["Luisa Born", "Gustavo Lessa"],
+            "art direction": ["Sergio Marimba", "Mirella Lima", "Helice Produções"],
+            "cenography": ["Sergio Marimba", "Mirella Lima", "Helice Produções"],
+            "styling": ["Ana Almeida"],
+            "makeup": ["Mari Mysz"],
+            "production direction": ["Luiza Machado"],
+            "production": ["Ju Damasio", "Thuanny Maldonado"],
+            "plateau": ["Lucas Rabetine"],
+        }
+    },
+
+    "catalogo2023": {
+        title:"Desenhos 2021-2023",
+        year: 2023,
+        client: author,
+        categories: ["illustration"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "editorial design": ["Vick Falcão", author],
+            "illustration": [author],
+            "animation": [author],
+        },
+    },
+
+    "ponta-do-curral": {
+        title:"Ponta do Curral",
+        year: 2022, //
+        studio: "NOO",
+        client: "Brasis",
+        categories: ["illustration"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "art direction":["Beatriz de Andrade"],
+            "design": ["Beatriz de Andrade", "Louise Favilla"],
+            "illustration": [author],
+        },
+    },
+
+    "barin": {
+        title:"Barin",
+        year: 2022,
+        studio: "NOO",
+        client: "Barin",
+        categories: ["motion", "graphic design", "illustration"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "art direction": ["Beatriz de Andrade"],
+            "motion": [author, "Fernando Villela", "Natalha Maffra"], //
+        }
+    },
+
+    "coquetel-molotov-2021": {
+        title:"No Ar Coquetel Molotov",
+        year: 2021, //
+        client: "Coquetel Molotov",
+        categories: ["ar filter", "motion"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "art direction":["Larissa Constantino"],
+            "visual identity":["Larissa Constantino"],
+            "graphic design": ["Kaique Lopes"],
+            "ar filter": ["Ryan Yves", "Guilherme de Lima", author],
+            "video editing": ["Ryan Yves", "Guilherme de Lima", author],
+            "motion": ["Ryan Yves", "Guilherme de Lima", author],
+        },
+    },
+
+    "cineorfao": {
+        title:"2º Festival CineOrfão de Cinema Sem Pais",
+        year: 2019, //
+        client: "Coquetel Molotov",
+        categories: ["visual identity", "motion", "art direction"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "art direction":[author],
+            "visual identity":[author],
+            "graphic design": [author],
+            "photography": ["Gabes"]
+        },
+    }, //https://www.behance.net/gallery/91866521/2-Festival-CineOrfao-de-Cinema-Sem-Pais
+
+    "painting-matter": {
+        title:"Painting Matter",
+        year: 2022, //
+        client: author,
+        categories: ["software", "programming"],
+
+        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
+        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
+
+        credits:{
+            "design": [author],
+            "programming": [author],
+            "splash screen artwork": ["Ryan Yves"],
+        },
     },
 }
