@@ -26,7 +26,25 @@ export const works = {
             "project management": ["Fábio Neves"],
             "account management": ["Ana Luisa Rodrigues"],
             "operations direction": ["Kathlyn Giaccomini"]
-        }
+        },
+
+        awards:[
+            {
+                name: "Latin America Design Awards",
+                year: 2022,
+                prize: "Silver",
+                categorie: "3D Animation",
+                link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2023/animation/lembrete-63acd09b"
+            },
+        ],
+
+        content:[
+            {type: "image", url: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/58383d240721445.694451603bd40.png"},
+            {type: "image", url: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_webp/46db1b240721445.694451603f69d.png"},
+            {type: "image", url: "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/96b048240721445.69445af83f63c.png"},
+        ],
+
+        about: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
     },
 
     "lembrete": {
@@ -40,14 +58,15 @@ export const works = {
         preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784389399/lebrete_preview.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
         
-        awards:{
-            "Latin America Design Awards":{
+        awards:[
+            {
+                name: "Latin America Design Awards",
                 year: 2022,
                 prize: "Silver",
                 categorie: "3D Animation",
                 link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2023/animation/lembrete-63acd09b"
             },
-        },
+        ],
 
         credits:{
             "creative direction": ["Judd Buchanan", author],
@@ -95,14 +114,15 @@ export const works = {
         preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784296681/preview_stonecamp_qwk3kl.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
     
-        awards:{
-            "Latin America Design Awards":{
+        awards:[
+            {
+                name: "Latin America Design Awards",
                 year: 2023,
                 prize: "Bronze",
                 categorie: "Graphic Design",
                 link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2024/graphic-design/stonecamp-2023-9e97e64b"
             },
-        },
+        ],
 
         credits:{
             "account management": ["Antonio Carvalho"],
@@ -194,13 +214,14 @@ export const works = {
         preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
 
-        awards:{
-            "Effect House Game Jam":{
+        awards:[
+            {
+                name: "Effect House Game Jam",
                 year: 2023,
                 categorie: "Gamemaster Award",
                 link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2024/graphic-design/stonecamp-2023-9e97e64b"
             },
-        },
+        ],
 
         credits:{
             "game design": ["Judd Buchanan", author],

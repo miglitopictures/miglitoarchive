@@ -1,4 +1,13 @@
 export const dict = {
+
+    titles: [
+        {en: "miglito archive"},
+        {en: "name", pt: "nome"},
+        {en: "a button", pt: "um botão"},
+        {en: "my website", pt: "meu site"},
+        {en: "website"},
+    ],
+
     categories:{
         "3d": {en: "3D", pt: "3D"},
         "animation": {en: "animation", pt: "animação"},

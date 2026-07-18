@@ -3,6 +3,22 @@ import { dict } from "./data/dictionary.js";
 
 let lang = "en";
 
+//setup title
+const titleElement = document.getElementById("site-title");
+const titleIndex = Math.floor(Math.random() * dict.titles.length);
+const titleText = dict.titles[titleIndex][lang] ? dict.titles[titleIndex][lang] : dict.titles[titleIndex]["en"];
+titleElement.textContent = titleText;
+
+// Play video
+titleElement.addEventListener('mouseenter', () => {
+    titleElement.textContent = 'miglito archive'
+});
+
+// Pause video
+titleElement.addEventListener('mouseleave', () => {
+    titleElement.textContent = titleText;
+});
+
 // setup observer for fade in ----------------------------------------------------------------------------------------------------------------
 
 const observerOptions = {
@@ -21,23 +37,105 @@ const observer = new IntersectionObserver((entries, observer) => {
   });
 }, observerOptions);
 
-function createWorkHtml(){
+function createProjectlHtml(project){
+    // ------------ make categories --------------
 
+    let categoriesHtml = '';
+
+    project.categories.forEach((categorie) => {
+        categoriesHtml += `<li><button>${dict.categories[categorie][lang]}</button></li>`
+    });
+
+    // -------------- make credits ------------
+
+    let creditsHtml = '';
+
+    if (project.credits) {
+        creditsHtml += '<dl><section aria-label="Credits">';
+
+
+        for (const role in project.credits) {
+            let contributorsHtml = '';
+
+            project.credits[role].forEach((contributor) => {
+                contributorsHtml += `
+                <dd>${contributor}</dd>`;
+            });
+
+            creditsHtml += `
+                <dt>${dict.roles[role] ? dict.roles[role][lang] : role}</dt>
+                ${contributorsHtml}
+                
+                `;
+
+        }
+
+        creditsHtml += `</dl></section>`;
+    }
+
+     // -------------- make content ------------
+
+    let contentHtml = '';
+
+    if (project.content){
+
+        for (const content of project.content){
+            switch (content.type){
+                case "image":
+                    contentHtml += `<img src="${content.url}"/>`;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+     // -------------- make awards ------------
+
+    let awardsHtml = '';
+
+    if (project.awards){
+        awardsHtml += '<section aria-label="Awards"><ul>'
+        for (const award of project.awards){
+            awardsHtml += `
+                <li>${award.name}</li>
+            `
+        }
+        awardsHtml += '</ul></section>'
+    }
+
+
+
+
+    const projectHtml = `
+        <article id="project-content">
+            <h2>${project.title}${project.awards ? '*' : ''}</h2>
+            <time datetime="${project.year}">${project.year}</time>
+            <video
+                ${project.preview_video ? `src="${project.preview_video}"` : ''}
+                poster="${project.preview_thumb}"
+                muted
+                loop
+                playsinline
+                preload="metadata">
+            </video>
+            <ul>
+                ${categoriesHtml}
+            </ul>
+            ${contentHtml}
+            ${awardsHtml}
+            ${creditsHtml}
+        </article>
+    `;
+
+    return projectHtml;
 }
 
+function createProjectListHtml(projects){
+    let projectListHtml = '';
+    for (const key in projects){
 
-
-function make(path){
-    const app = document.querySelector('main');
-
-    if (path === '/' || path === '/index.html'){
-        // home (worklist) -------------------------------------------------------------------------------------------------
-
-        let worksHtml = '';
-
-        for (const key in works){
-
-            const work = works[key];
+            const work = projects[key];
 
             // ------------ make categories --------------
 
@@ -49,7 +147,7 @@ function make(path){
 
             // ------------ make work preview div--------------
 
-            worksHtml += `
+            projectListHtml += `
                 <article class="project-preview fade-in-element ${work.awards ? 'awarded' : ''}">
                     <h2>${work.title}${work.awards ? '*' : ''}</h2>
                     <time datetime="${work.year}">${work.year}</time>
@@ -70,11 +168,17 @@ function make(path){
                 </article>
             `
         }
+    return projectListHtml;
+}
 
+function make(path){
+    const app = document.querySelector('main');
 
+    if (path === '/' || path === '/index.html'){
+        // home (worklist) ------------------------------------------------------------------------------------------------
 
         // UPDATE DOM
-        app.innerHTML = worksHtml;
+        app.innerHTML = createProjectListHtml(works);
         
         const workPreviewDivs = document.querySelectorAll('.project-preview');
 
@@ -100,7 +204,7 @@ function make(path){
         });        
 
         // UPDATE META
-        document.title = 'miglito archive';
+        document.title = titleText;
 
     } else {
 
@@ -108,62 +212,11 @@ function make(path){
 
         const key = path.slice(1); // extract key from path '/my-project' -> 'my-project'
         const work = works[key];   // get work from works object using key
-
-        // ------------ make categories --------------
-
-        let categoriesHtml = '';
-
-        work.categories.forEach((categorie) => {
-            categoriesHtml += `<li><button>${dict.categories[categorie][lang]}</button></li>`
-        })
-
-        // -------------- make credits ------------
-
-        let creditsHtml = '<dl><section aria-label="Credits">';
-
-        if (work.credits) {
-            for (const role in work.credits) {
-                let contributorsHtml = '';
-
-                work.credits[role].forEach((contributor) => {
-                    contributorsHtml += `
-                    <dd>${contributor}</dd>`;
-                })
-
-                creditsHtml += `
-                    <dt>${dict.roles[role] ? dict.roles[role][lang] : role}</dt>
-                    ${contributorsHtml}
-                    
-                    `;
-
-            }
-
-            creditsHtml += `</dl></section>`
-        }
-
-        let projectPageHtml = `
-            <article id="project-content">
-                <h2>${work.title}${work.awards ? '*' : ''}</h2>
-                <time datetime="${work.year}">${work.year}</time>
-                <video
-                    ${work.preview_video ? `src="${work.preview_video}"` : ''}
-                    poster="${work.preview_thumb}"
-                    muted
-                    loop
-                    playsinline
-                    preload="metadata">
-                </video>
-                <ul>
-                    ${categoriesHtml}
-                </ul>
-                ${creditsHtml}
-            </article>
-        `;
         
         // UPDATE DOM
-        app.innerHTML = projectPageHtml;
+        app.innerHTML = createProjectlHtml(work);
         // UPDATE META
-        document.title = `${work.title} | miglito archive`;
+        document.title = `${work.title} | ${titleText}`;
 
     }
     

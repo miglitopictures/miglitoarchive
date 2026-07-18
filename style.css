@@ -81,10 +81,17 @@ h2 {
 
 }
 
+img {
+    /* border: rgb(0, 0, 0) 2px solid; */
+    
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
 video {
     /* border: rgb(0, 0, 0) 2px solid; */
     
-    box-sizing: border-box;
     width: 100%;
     height: 100%;
     object-fit: cover;
