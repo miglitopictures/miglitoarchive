@@ -36,8 +36,8 @@ export const works = {
         client: "NOO",
         categories: ["3d", "animation", "short film"],
 
-        preview_thumb: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/1bcaab159061067.63977d30ed321.png",
-        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/f_auto,q_auto,w_800/v1770302765/projects/tap-to-pay-zoop/y1droueioptnwkagby0j.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/so_3/v1784389399/lebrete_preview.jpg",
+        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784389399/lebrete_preview.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
         
         awards:{
@@ -65,8 +65,8 @@ export const works = {
         client: "Zoop",
         categories: ["3d", "motion", "graphic design"],
 
-        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/f_auto,q_auto,w_800,so_0/v1770302765/projects/tap-to-pay-zoop/y1droueioptnwkagby0j.jpg",
-        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/f_auto,q_auto,w_800/v1770302765/projects/tap-to-pay-zoop/y1droueioptnwkagby0j.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784295401/output_ewz1kj.jpg",
+        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784295401/output_ewz1kj.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
 
         credits:{
@@ -91,8 +91,8 @@ export const works = {
         client: "Stone",
         categories: ["3d", "motion", "graphic design"],
 
-        preview_thumb: "https://mir-s3-cdn-cf.behance.net/project_modules/1400/6a1797188504087.65a83bcf5f2a1.png",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784296681/preview_stonecamp_qwk3kl.jpg",
+        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784296681/preview_stonecamp_qwk3kl.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
     
         awards:{
@@ -149,8 +149,8 @@ export const works = {
         client: "Sesc",
         categories: ["motion"],
 
-        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/so_2.3/v1784297501/jazz_qovkjm.jpg",
+        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784297501/jazz_qovkjm.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
 
         credits:{

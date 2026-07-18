@@ -1,7 +1,7 @@
 import { works } from "./data/projects.js"; // portfolio data
 import { dict } from "./data/dictionary.js";
 
-let lang = "pt";
+let lang = "en";
 
 // setup observer for fade in ----------------------------------------------------------------------------------------------------------------
 
@@ -20,6 +20,10 @@ const observer = new IntersectionObserver((entries, observer) => {
     }
   });
 }, observerOptions);
+
+function createWorkHtml(){
+
+}
 
 
 
@@ -90,8 +94,8 @@ function make(path){
 
             // Pause video
             video.addEventListener('mouseleave', () => {
-                video.pause(); 
-                // video.currentTime = 0; Optional: Resets video to start
+                video.pause();
+                // video.currentTime = 0;
             });
         });        
 
