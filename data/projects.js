@@ -44,7 +44,7 @@ export const works = {
             {type: "image", url: "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/96b048240721445.69445af83f63c.png"},
         ],
 
-        about: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+        about: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
     },
 
     "lembrete": {
@@ -74,7 +74,9 @@ export const works = {
             "character design": [author],
             "3d modeling": ["Judd Buchanan"],
             "character animation": ["Judd Buchanan"]
-        }
+        },
+
+        about: "Lembrete ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
     },
 
     "tap-to-pay": {
@@ -99,7 +101,11 @@ export const works = {
             "project management": ["Fábio Neves"],
             "account management": ["Ana Luisa Rodrigues"],
             "post-production direction": ["Marcio Sal"]
-        }
+        },
+
+
+        about: "Zoop ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
 
@@ -135,7 +141,10 @@ export const works = {
             "copywriting": ["Gabriel Pardal"],
             "photography": ["Luke Garcia"],
             "project management": ["Capitão Foca"]
-        }
+        },
+
+        about: "stonecamp ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     
@@ -159,7 +168,10 @@ export const works = {
             "design":["Louise Favilla", "Beatriz de Andrade", "Fernando Villela", author],
             "animation": ["Fernando Villela", author],
             "project management": ["Consoante Soma de Sons"] // soud design and music
-        }
+        },
+
+        about: "Kimura ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     "sesc-jazz": {
@@ -180,7 +192,9 @@ export const works = {
             "mural":["Amarelo Gráfico", "Amanda Navarro"],
             "motion design": ["Larissa Constantino", author],
             "web development": ["Grama"],
-        }
+        },
+
+        about: "Estúdio Daó ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
     },
 
     "sesc-melhores-filmes": {
@@ -199,7 +213,10 @@ export const works = {
             "graphic project": ["Giulia Fagundes", "Felipe Regis"],
             "layout": ["Giulia Fagundes"],
             "motion design": ["Larissa Constantino", author]
-        }
+        },
+
+        about: "Sesc ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     "hungry-giraffe": {
@@ -226,7 +243,10 @@ export const works = {
         credits:{
             "game design": ["Judd Buchanan", author],
             "programming": [author],
-        }
+        },
+
+        about: "Gamemaster Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     "natal-coca-cola": {
@@ -245,7 +265,10 @@ export const works = {
             "direction": ["Marcio Sal"],
             "programming": [author],
             "animation": [author],
-        }
+        },
+
+        about: "Coca-Cola Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     "trident-filter": {
@@ -265,7 +288,10 @@ export const works = {
             "direction": ["Marcio Sal"],
             "executive production": ["Kathlyn Giaccomini"],
             "programming": [author, "Judd Buchannan", "Cadu Coelho"],
-        }
+        },
+
+        about: "Trident Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
 
@@ -283,7 +309,10 @@ export const works = {
         credits:{
             "design": ["Vick Falcão", author],
             "typography": ["Vick Falcão"],
-        }
+        },
+
+        about: "Documentário Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     "paladar": {
@@ -300,7 +329,9 @@ export const works = {
             "design": ["Vick Falcão", author],
             "3d": ["Vick Falcão", author],
             "research": ["Vick Falcão", "Ryan Yves", author],
-        }
+        },
+
+        about: "Mandinga Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
     },
 
     "apartamento": {
@@ -315,7 +346,10 @@ export const works = {
 
         credits:{
             "design": ["Ryan Yves", author],
-        }
+        },
+
+        about: "João Cortez Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     "ansif": {
@@ -330,7 +364,10 @@ export const works = {
 
         credits:{
             "design": ["Vick Falcão", author],
-        }
+        },
+
+        about: "FUNAI's ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     "marcelo-d2": {
@@ -360,7 +397,10 @@ export const works = {
             "production direction": ["Luiza Machado"],
             "production": ["Ju Damasio", "Thuanny Maldonado"],
             "plateau": ["Lucas Rabetine"],
-        }
+        },
+
+        about: "D2 ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+
     },
 
     "catalogo2023": {
