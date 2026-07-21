@@ -14,10 +14,13 @@ html {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-    max-width: 600px;
+/* body {
     margin: 0px auto;
-}
+} */
+
+/* .project-preview{
+    border: solid black 1px;
+} */
 
 nav {
     overflow: visible;
@@ -25,8 +28,8 @@ nav {
     top: 0;
     left: 0;
     right: 0;
-    max-width: inherit; 
-    margin: 0 auto; /* Centers the fixed bar on the screen */
+    max-width: 600px; 
+    /* margin: 0 auto;  */
 
     background-color: var(--main-color);
     display: flex;
@@ -55,16 +58,23 @@ li button {
     line-height: 1;
     text-transform: uppercase;
 }
+main{
+    display: flex;
+}
 
-main {
+#maincontent {
+    max-width: 600px;
+
     padding-top: 35px;
 
     background-color: rgb(198, 198, 198);
 
     /* possibly make it flex again to have gap? */
-    /* display: flex;
-    flex-direction: column;
-    gap: 30px; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* flex-wrap: wrap;
+    gap: 30px;
+    row-gap: 30px; */
 }
 
 
@@ -85,15 +95,33 @@ img {
     /* border: rgb(0, 0, 0) 2px solid; */
     
     width: 100%;
-    height: 100%;
+    /* max-width: 600px; */
+    /* height: 100%; */
     display: block;
+}
+
+#sidepanel {
+    position: fixed;
+    left: 600px;
+    width: calc(100vw - 600px);
+    height: 100vh;
+    background-color: rgb(224, 224, 224);    
+
+}
+
+#sidepanel img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position:  center;
 }
 
 video {
     /* border: rgb(0, 0, 0) 2px solid; */
     
     width: 100%;
-    height: 100%;
+    /* max-width: 600px; */
+    /* height: 100%; */
     object-fit: cover;
     display: block;
     transition: max-height 1.6s ease;
@@ -116,4 +144,33 @@ dt{
 /* State when visible */
 .fade-in-element.is-visible {
   opacity: 1;
+}
+
+
+
+
+#testdiv{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+    width: 600px;
+    height: 400px;
+    background-color: tomato;    
+}
+
+#testDragImg{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 101;
+    width: 600px;
+    height: 400px;
+    background-color: tomato;    
+}
+
+.dragArea{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(74, 71, 255);    
 }

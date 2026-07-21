@@ -1,26 +1,29 @@
-import { works } from "./data/projects.js"; // portfolio data
-import { dict } from "./data/dictionary.js";
+// import data
+import { works } from "../data/projects.js";
+import { dict } from "../data/dictionary.js";
+// import functionality
+import { makeDraggable } from "./draggable.js";
 
+// setup language NOTE
 let lang = "en";
 
-//setup title
+//setup title randomization
 const titleElement = document.getElementById("site-title");
 const titleIndex = Math.floor(Math.random() * dict.titles.length);
 const titleText = dict.titles[titleIndex][lang] ? dict.titles[titleIndex][lang] : dict.titles[titleIndex]["en"];
-titleElement.textContent = titleText;
 
-// Play video
+titleElement.textContent = titleText;
 titleElement.addEventListener('mouseenter', () => {
     titleElement.textContent = 'miglito archive'
 });
-
-// Pause video
 titleElement.addEventListener('mouseleave', () => {
     titleElement.textContent = titleText;
 });
 
-// setup observer for fade in ----------------------------------------------------------------------------------------------------------------
+// setup draggable elements
 
+
+// setup observer for fade in
 const observerOptions = {
   root: null, // use the viewport
   threshold: 0.2 // 20% of the element is visible
@@ -37,8 +40,11 @@ const observer = new IntersectionObserver((entries, observer) => {
   });
 }, observerOptions);
 
-function createProjectlHtml(project){
-    // ------------ make categories --------------
+
+// HTML generators
+function ProjectlHtml(project){
+    
+    //  make categories
 
     let categoriesHtml = '';
 
@@ -46,7 +52,7 @@ function createProjectlHtml(project){
         categoriesHtml += `<li><button>${dict.categories[categorie][lang]}</button></li>`
     });
 
-    // -------------- make credits ------------
+    // make credits 
 
     let creditsHtml = '';
 
@@ -73,7 +79,7 @@ function createProjectlHtml(project){
         creditsHtml += `</dl></section>`;
     }
 
-     // -------------- make content ------------
+     // make content 
 
     let contentHtml = '';
 
@@ -90,7 +96,7 @@ function createProjectlHtml(project){
         }
     }
 
-     // -------------- make awards ------------
+     // make awards
 
     let awardsHtml = '';
 
@@ -131,13 +137,13 @@ function createProjectlHtml(project){
     return projectHtml;
 }
 
-function createProjectListHtml(projects){
+function ProjectListHtml(projects){
     let projectListHtml = '';
     for (const key in projects){
 
             const work = projects[key];
 
-            // ------------ make categories --------------
+            // make categories
 
             let categoriesHtml = '';
 
@@ -145,12 +151,15 @@ function createProjectListHtml(projects){
                 categoriesHtml += `<li><button>${dict.categories[categorie][lang]}</button></li>`
             })
 
-            // ------------ make work preview div--------------
+            //  make work preview div
 
             projectListHtml += `
                 <article class="project-preview fade-in-element ${work.awards ? 'awarded' : ''}">
                     <h2>${work.title}${work.awards ? '*' : ''}</h2>
                     <time datetime="${work.year}">${work.year}</time>
+                    <ul aria-label="Categories">
+                        ${categoriesHtml}
+                    </ul>
                     <a href="/${key}" aria-label="View project: ${work.title}">
                         <video
                             ${work.preview_video ? `src="${work.preview_video}"` : ''}
@@ -162,9 +171,6 @@ function createProjectListHtml(projects){
                             preload="metadata">
                         </video>
                     </a>
-                    <ul aria-label="Categories">
-                        ${categoriesHtml}
-                    </ul>
                 </article>
             `
         }
@@ -172,14 +178,17 @@ function createProjectListHtml(projects){
 }
 
 function make(path){
-    const app = document.querySelector('main');
+    const app = document.querySelector('#maincontent');
+    const sidepanel = document.querySelector('#sidepanel');
+    const sidepanelImage = sidepanel.querySelector('img');
 
     if (path === '/' || path === '/index.html'){
         // home (worklist) ------------------------------------------------------------------------------------------------
 
         // UPDATE DOM
-        app.innerHTML = createProjectListHtml(works);
+        app.innerHTML = ProjectListHtml(works);
         
+        // PLAY ON HOVER
         const workPreviewDivs = document.querySelectorAll('.project-preview');
 
         // ---------------- observe and play on over ----------------
@@ -194,11 +203,14 @@ function make(path){
                     console.log("Playback interrupted");
                     console.log(err);
                 });
+                sidepanelImage.src = video.poster;
             });
 
             // Pause video
             video.addEventListener('mouseleave', () => {
                 video.pause();
+                sidepanelImage.src = '';
+
                 // video.currentTime = 0;
             });
         });        
@@ -214,7 +226,7 @@ function make(path){
         const work = works[key];   // get work from works object using key
         
         // UPDATE DOM
-        app.innerHTML = createProjectlHtml(work);
+        app.innerHTML = ProjectlHtml(work);
         // UPDATE META
         document.title = `${work.title} | ${titleText}`;
 

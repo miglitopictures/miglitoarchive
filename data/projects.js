@@ -54,7 +54,7 @@ export const works = {
         client: "NOO",
         categories: ["3d", "animation", "short film"],
 
-        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/so_3/v1784389399/lebrete_preview.jpg",
+        preview_thumb: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200_webp/1bcaab159061067.63977d30ed321.png",
         preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784389399/lebrete_preview.mp4",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
         
