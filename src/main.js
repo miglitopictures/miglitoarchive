@@ -181,11 +181,15 @@ function make(path){
     const app = document.querySelector('#maincontent');
     const sidepanel = document.querySelector('#sidepanel');
     const sidepanelImage = sidepanel.querySelector('img');
+    const sidepanelText = sidepanel.querySelector('p');
+
+    
 
     if (path === '/' || path === '/index.html'){
         // home (worklist) ------------------------------------------------------------------------------------------------
 
         // UPDATE DOM
+        sidepanelText.innerHTML = dict.content.homepage[lang]
         app.innerHTML = ProjectListHtml(works);
         
         // PLAY ON HOVER
@@ -204,12 +208,18 @@ function make(path){
                     console.log(err);
                 });
                 sidepanelImage.src = video.poster;
+                sidepanelImage.classList.remove('hidden');
+                sidepanelText.classList.add('hidden');
+
             });
 
             // Pause video
             video.addEventListener('mouseleave', () => {
                 video.pause();
                 sidepanelImage.src = '';
+                sidepanelImage.classList.add('hidden');
+                sidepanelText.classList.remove('hidden');
+                
 
                 // video.currentTime = 0;
             });
@@ -220,6 +230,8 @@ function make(path){
 
     } else {
 
+
+
         // project page ----------------------------------------------------------------------------------------------------
 
         const key = path.slice(1); // extract key from path '/my-project' -> 'my-project'
@@ -228,6 +240,13 @@ function make(path){
         // UPDATE DOM
         app.innerHTML = ProjectlHtml(work);
         // UPDATE META
+        sidepanelImage.classList.add('hidden');
+        sidepanelText.classList.remove('hidden');
+        if (work.about){
+            sidepanelText.innerHTML = work.about;
+        }
+        
+
         document.title = `${work.title} | ${titleText}`;
 
     }

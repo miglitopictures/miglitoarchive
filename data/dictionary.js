@@ -1,11 +1,16 @@
 export const dict = {
+    content:{
+        "homepage": {
+            en: "Good evening, my name is Miguel. I've been working with design, animation, and audiovisual media since 2015. I collaborate with individuals and studios to create interesting images in their multiple permutations.<br><br>I participated in award-winning projects at the Latin American Design Awards with Lembrete and Stonecamp23. And I developed the award-winning game at the first Effect House Gamejam on TikTok, Hungry Giraffe.<br><br>Over the last 6 years, my interest in programming as a form of expression has gradually grown. Today, I am in my 3rd semester of a Bachelor's degree in Systems Development at Cesar School.", 
+            pt: "Boa noite, meu nome é Miguel. Trabalho com design, animação e audiovisual desde 2015. Colaboro com pessoas e estúdios para criar imagens interessantes em suas múltiplas permutações.<br><br>Participei de projetos premiados no Latin American Design Awards com Lembrete e Stonecamp23. E desenvolvi o jogo premiado na primeira Effect House Gamejam do Tiktok, Hungry Giraffe.<br><br>Nos últimos 6 anos, meu interesse por programação como forma de expressão cresceu gradualmente. Hoje, curso o 3º semestre da graduação em Desenvolvimento de Sistemas no Cesar School."},
+    },
 
     titles: [
         {en: "miglito archive"},
-        {en: "name", pt: "nome"},
-        {en: "a button", pt: "um botão"},
-        {en: "my website", pt: "meu site"},
-        {en: "website"},
+        {en: "miguel duarte"},
+        {en: "miglito"},
+        {en: "miglitopedia"},
+        {en: "miglito.com"},
     ],
 
     categories:{

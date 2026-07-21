@@ -9,7 +9,7 @@ export const works = {
         categories: ["design", "motion"],
 
         preview_thumb: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/750683240721445.6944516041736.png",
-        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1778525393/preview_histerica_zkc4v1.mp4",
+        preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1778525393/preview_histerica_zkc4v1.mp4", // bug no chrome
         preview_alt: "Newspaper cut-out of a woman subtly smilling with the written word 'Histéca', in vivid lime green, centered in the frame.",
         
         credits:{
