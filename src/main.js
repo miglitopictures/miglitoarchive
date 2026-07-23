@@ -4,8 +4,27 @@ import { dict } from "../data/dictionary.js";
 // import functionality
 import { makeDraggable } from "./draggable.js";
 
+
+// sidepannel sketched and entries
+let currentSketch = null;
+let currentEntries = [];
+let currentIndex = 0;
+
 // setup language NOTE
 let lang = "en";
+
+// setup flipping
+const flipButton = document.querySelector('#flip-layout');
+
+// restore preference on load
+if (localStorage.getItem('layoutFlipped') === 'true') {
+    document.body.classList.add('flipped');
+}
+
+flipButton.addEventListener('click', () => {
+    document.body.classList.toggle('flipped');
+    localStorage.setItem('layoutFlipped', document.body.classList.contains('flipped'));
+});
 
 //setup title randomization
 const titleElement = document.getElementById("site-title");
@@ -42,6 +61,8 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 
 // HTML generators
+
+
 function ProjectlHtml(project){
     
     //  make categories
@@ -112,8 +133,8 @@ function ProjectlHtml(project){
 
     let aboutHtml = ''; // mobile only
 
-    if (project.about) {
-        aboutHtml = `<p class="mobileOnly">${project.about}</p>`;
+    if (project.sidepanel) {
+        aboutHtml = MobileSidepanelHtml(project.sidepanel);
     }
 
 
@@ -186,20 +207,118 @@ function ProjectListHtml(projects){
     return projectListHtml;
 }
 
+function MobileSidepanelHtml(entries){
+    let html = '';
+
+    entries.forEach((entry) => {
+        switch (entry.type) {
+            case 'about':
+                html += `<p class="mobileOnly">${entry.text[lang]}</p>`
+                break;
+            case 'p5':
+                const message = entry.mobileMessage ? entry.mobileMessage[lang] :  dict.content["sketch-mobile-fallback"][lang];
+                html += `<p class="mobileOnly sketch-mobile-note">${message}</p>`
+                break;
+        }
+    })
+
+    return html;
+}
+
+function makeSidepanelNav(entries, index){
+    // pega o nav do painel
+    const spNav = document.querySelector('.sidepanel-nav');
+    // se nao tem multiplos entries (paginas em sidepanel), nao temos nav. return!
+    if (entries.length <= 1) {
+        spNav.innerHTML = '';
+        return;
+    }
+
+    let dotsHtml = '';
+    entries.map( (_, i) => {
+        dotsHtml += `
+            <span class="sp-dot ${i == index ? 'active' : ''}"></span>
+        `;
+    });
+
+    spNav.innerHTML = `
+        <button class="sp-prev" aria-label="Previous">&lt</button>
+        <div class="sp-dots">${dotsHtml}</div>
+        <button class="sp-next" aria-label="Next">&gt</button>
+    `
+
+    spNav.querySelector('.sp-prev').onclick = (e) => {
+        currentIndex = (index - 1 + entries.length) % entries.length;
+        makeSidepanelPage(entries, currentIndex);
+        // e.stopPropagation();
+    }
+
+    spNav.querySelector('.sp-next').onclick = (e) => {
+        currentIndex = (index + 1) % entries.length;
+        makeSidepanelPage(entries, currentIndex);
+        // e.stopPropagation();
+    }
+}
+
+function makeSidepanelPage(entries, index){
+    // se um sketch ja estiver carregado: limpamos
+    if (currentSketch) {
+        currentSketch.remove(); // unmount p5 sketch (p5 instance method)
+        currentSketch = null; // limpar para proxima vez
+    }
+
+
+    // get the sidepannel viewport element and clean it
+    const spViewport = document.querySelector('.sidepanel-viewport');
+    spViewport.innerHTML = '';
+
+    // current sidepannel entry --------
+    const entry = entries[index];
+
+    switch (entry.type) {
+        case 'about':
+            const p = document.createElement('p');
+            p.innerHTML = entry.text[lang];
+            spViewport.appendChild(p);
+            p.scrollTop = 0;     // new — see note below
+            break;
+        case 'p5':
+            const container = document.createElement('div');
+            container.className = 'sketch-container';
+            spViewport.appendChild(container);
+            
+            // carrega sketch
+            import(entry.src).then(({ default: sketch }) => {
+                currentSketch = new p5(sketch, container);
+            });
+
+            break;
+    }
+
+    makeSidepanelNav(entries, index);
+}
+
+
 function make(path){
-    const app = document.querySelector('#maincontent');
+    const maincontent = document.querySelector('#maincontent');
     const sidepanel = document.querySelector('#sidepanel');
-    const sidepanelImage = sidepanel.querySelector('img');
-    const sidepanelText = sidepanel.querySelector('p');
+    const sidepanelViewport = sidepanel.querySelector('.sidepanel-viewport');
+    const sidepanelImage = sidepanel.querySelector('.sidepanel-hover-image');
 
     
 
     if (path === '/' || path === '/index.html'){
         // home (worklist) ------------------------------------------------------------------------------------------------
 
-        // UPDATE DOM
-        sidepanelText.innerHTML = dict.content.homepage[lang];
-        app.innerHTML = ProjectListHtml(works);
+        // homepage sidepannel
+        currentEntries = [{ type: 'about', text: dict.content.homepage }];
+        currentIndex = 0;
+        makeSidepanelPage(currentEntries, 0);
+
+        // homepage maincontent
+        maincontent.innerHTML = ProjectListHtml(works);
+
+        maincontent.scrollTop = 0;   // new
         
         // PLAY ON HOVER
         const workPreviewDivs = document.querySelectorAll('.project-preview');
@@ -218,7 +337,7 @@ function make(path){
                 });
                 sidepanelImage.src = video.poster;
                 sidepanelImage.classList.remove('hidden');
-                sidepanelText.classList.add('hidden');
+                sidepanelViewport.classList.add('hidden');
 
             });
 
@@ -227,7 +346,7 @@ function make(path){
                 video.pause();
                 sidepanelImage.src = '';
                 sidepanelImage.classList.add('hidden');
-                sidepanelText.classList.remove('hidden');
+                sidepanelViewport.classList.remove('hidden');
                 
 
                 // video.currentTime = 0;
@@ -247,13 +366,18 @@ function make(path){
         const work = works[key];   // get work from works object using key
         
         // UPDATE DOM
-        app.innerHTML = ProjectlHtml(work);
+        maincontent.innerHTML = ProjectlHtml(work);
         // UPDATE META
-        sidepanelImage.classList.add('hidden');
-        sidepanelText.classList.remove('hidden');
-        if (work.about){
-            sidepanelText.innerHTML = work.about;
+
+        if (work.sidepanel){
+            currentEntries = work.sidepanel;
+            currentIndex = 0;
+            makeSidepanelPage(currentEntries, 0);
         }
+        
+
+        sidepanelImage.classList.add('hidden');
+        sidepanelViewport.classList.remove('hidden');
         
 
         document.title = `${work.title} | ${titleText}`;

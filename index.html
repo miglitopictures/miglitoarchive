@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="miglito — design, animation & code">
+    <meta property="og:description" content="Selected work in design, animation, and interactive media by Miguel Duarte.">
+    <meta property="og:image" content="https://yoursite.com/assets/preview.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     <title>miglito archive</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
@@ -11,6 +18,7 @@
 
     <nav aria-label="Site navigation">
         <h1 id="site-title">miglito archive</h1>
+        <button id="flip-layout" aria-label="Flip layout">⇄</button>
         <a href="/">+</a>
     </nav>
 
@@ -26,10 +34,14 @@
         <div id="maincontent">
         </div>
         <div id="sidepanel">
-            <!-- <p>Boa noite, meu nome é Miguel. Trabalho com design, animação e audiovisual desde 2015. Colaboro com pessoas e estúdios para criar imagens interessantes em suas múltiplas permutações.<br><br>Participei de projetos premiados no Latin American Design Awards com Lembrete e Stonecamp23. E desenvolvi o jogo premiado na primeira Effect House Gamejam do Tiktok, Hungry Giraffe.<br><br>Nos últimos 6 anos, meu interesse por programação como forma de expressão cresceu gradualmente. Hoje, curso o 3º semestre da graduação em Desenvolvimento de Sistemas no Cesar School.</p> -->
+            <div class="sidepanel-viewport"></div>
+            <div class="sidepanel-nav"></div>
+            <img class="sidepanel-hover-image hidden">
+        </div>
+        <!-- <div id="sidepanel">
              <p></p>
             <img src="" alt="" class="hidden">
-        </div>
+        </div> -->
     </main>
 
     <footer aria-label="Site footer">
@@ -68,6 +80,7 @@
         }
     </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/p5@2.2.3/lib/p5.js" defer></script>
     <script type="module" src="./src/main.js"></script>
 </body>
 </html>

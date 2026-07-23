@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@2.2.3/lib/p5.js"></script>
+</head>
+<body style="margin:0">
+    <div class="sketch-container" style="width:100vw; height:100vh;"></div>
+    <script type="module">
+        import sketch from './oblique.js';
+        const container = document.querySelector('.sketch-container');
+        new p5(sketch, container);
+    </script>
+</body>
+</html>

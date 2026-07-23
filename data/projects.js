@@ -44,7 +44,25 @@ export const works = {
             {type: "image", url: "https://mir-s3-cdn-cf.behance.net/project_modules/max_3840_webp/96b048240721445.69445af83f63c.png"},
         ],
 
-        about: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
+
+        // about: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
     },
 
     "lembrete": {
@@ -76,7 +94,23 @@ export const works = {
             "character animation": ["Judd Buchanan"]
         },
 
-        about: "Lembrete ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Warning ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Lembrete ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/oblique.js",
+                mobileMessage: {
+                    en: "An interactive test — best on desktop.",
+                    pt: "Uma ferramenta de teste — melhor no computador."
+                }
+            },
+        ],
     },
 
     "tap-to-pay": {

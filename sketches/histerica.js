@@ -6,11 +6,12 @@ export default (p) => {
     let margin = 40;
 
     p.setup = () => {
-        p.createCanvas(600, 600);
+        const container = document.querySelector('.sketch-container');
+        p.createCanvas(container.clientWidth, container.clientHeight);
         pg = p.createGraphics(p.width - margin * 2, p.height - margin * 2);
         pg.noFill();
         p.background(200);
-        pg.background(220)
+        pg.background(220);
     };
 
     p.draw = () => {
@@ -23,5 +24,15 @@ export default (p) => {
         }
 
         p.image(pg, margin, margin);
-    }
+    };
+
+    p.windowResized = () => {
+        const container = document.querySelector('.sketch-container');
+        console.log('resize fired', container.clientWidth, container.clientHeight);
+        p.resizeCanvas(container.clientWidth, container.clientHeight);
+        pg = p.createGraphics(p.width - margin * 2, p.height - margin * 2);
+        pg.noFill();
+        p.background(200);
+        pg.background(220);
+    };
 };
