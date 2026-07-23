@@ -167,7 +167,39 @@ function ProjectlHtml(project){
 function ProjectListHtml(projects){
     let projectListHtml = '';
 
-    projectListHtml += `<p class="mobileOnly">${dict.content.homepage[lang]}</p>`
+    const fullParagraph = dict.content.homepage[lang];
+    let firstParagraph, restParagraph;
+
+    { //splitFirstParagraph
+        const separator = '<br><br>';
+        const idx = fullParagraph.indexOf(separator);
+        if (idx === -1) {
+            firstParagraph = fullParagraph;
+            restParagraph = '';
+        } else {
+            firstParagraph = fullParagraph.slice(0, idx);
+            restParagraph = fullParagraph.slice(idx + separator.length/2);
+        }
+        
+    }
+    projectListHtml += `
+        <section class="mobileOnly mobile-about">
+            <p class="mobile-about-first">${firstParagraph}</p>
+            ${restParagraph ? `<p class="mobile-about-rest hidden">${restParagraph}</p>` : ''}
+            ${restParagraph ? `<button class="mobile-about-toggle" aria-expanded="false">+ read more</button>` : ''}
+        </section>
+    `;
+    
+    // i want to make this homepage text only show the first x lines and add a + expand button that opens the div
+    // projectListHtml += `<p class="mobileOnly expandable">${dict.content.homepage[lang]}</p>`?
+    // projectListHtml += `
+    //      <section id='mobileAbout' class='mobileOnly'>
+    //          <p class="mobileOnly expandable">${dict.content.homepage[lang]}</p>
+    //          <button><button/>
+    //      </section>
+    // `?
+
+    // i dont know the best way exactly
 
     for (const key in projects){
 
@@ -235,16 +267,32 @@ function makeSidepanelNav(entries, index){
     }
 
     let dotsHtml = '';
-    entries.map( (_, i) => {
-        dotsHtml += `
-            <span class="sp-dot ${i == index ? 'active' : ''}"></span>
-        `;
-    });
+    // {   // ig carrossel style dots
+    //     dotsHtml = '<div class="sp-dots">';
+    //     entries.map( (_, i) => {
+    //         dotsHtml += `
+    //             <span class="sp-dot ${i == index ? 'active' : ''}"></span>
+    //         `;
+    //     });
+    //     dotsHtml += '</div>';
+    // }
+
+    let nextPreviousHtml = `
+        <div>
+            <button class="sp-prev" aria-label="Previous">&lt</button>
+            ${dotsHtml}
+            <button class="sp-next" aria-label="Next">&gt</button>
+        </div>
+    `
+
+    let changeLangHtml = `
+        <div><a>PT</a>/<a>EN</a></div>
+    `
+
 
     spNav.innerHTML = `
-        <button class="sp-prev" aria-label="Previous">&lt</button>
-        <div class="sp-dots">${dotsHtml}</div>
-        <button class="sp-next" aria-label="Next">&gt</button>
+        ${changeLangHtml}
+        ${nextPreviousHtml}
     `
 
     spNav.querySelector('.sp-prev').onclick = (e) => {
@@ -317,8 +365,19 @@ function make(path){
 
         // homepage maincontent
         maincontent.innerHTML = ProjectListHtml(works);
+        maincontent.scrollTop = 0;
 
-        maincontent.scrollTop = 0;   // new
+        // mobile about expand/collapse
+        const aboutToggle = document.querySelector('.mobile-about button');
+        const aboutRest = document.querySelector('.mobile-about-rest');
+
+        if (aboutToggle) {
+            aboutToggle.addEventListener('click', () => {
+                const isExpanded = aboutRest.classList.toggle('hidden');
+                aboutToggle.textContent = isExpanded ? '+ read more' : '− show less';
+                aboutToggle.setAttribute('aria-expanded', !isExpanded);
+            });
+        }
         
         // PLAY ON HOVER
         const workPreviewDivs = document.querySelectorAll('.project-preview');

@@ -22,6 +22,7 @@ nav {
     left: 0;
     width: var(--content-width);
     max-width: 100%; /* safety clamp for very narrow viewports */
+    height: 35px;
 
     background-color: var(--main-color);
     display: flex;
@@ -34,6 +35,11 @@ nav a{
     color: black;
     text-decoration: none;
     font-size: 20pt;
+}
+
+#site-title {
+    font-size: 20pt;
+    font-weight: bold;
 }
 
 li {
@@ -69,6 +75,7 @@ body.flipped #sidepanel {
 
 
 body.flipped nav {
+    flex-direction: row-reverse;
     left: auto;
     right: 0;
 }
@@ -86,18 +93,38 @@ body.flipped nav {
 
 }
 
-#maincontent p {
+.mobile-about {
+    
     max-height: 100vh;
     max-width: 100%;
     overflow-y: auto;
     padding: 30px;
     /* font-size: 3.5vw; */
-    font-size: 18px;
+    
 
     /* border: red solid 1px; */
 
     background-color: rgb(224, 224, 224);
 
+}
+
+.mobile-about p {
+    font-size: 22pt;
+}
+
+.mobile-about-rest.hidden {
+    display: none;
+}
+
+.mobile-about button {
+    background: none;
+    border: none;
+    padding: 8px 30px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: black;
+    cursor: pointer;
 }
 
 
@@ -122,30 +149,43 @@ img {
 #sidepanel {
     order: 2;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
     height: 100vh;
     background-color: rgb(224, 224, 224);
     overflow: hidden;
 
-    position: relative;   /* new */
-
-
-    /* overflow: scroll; */
+    position: relative;
 }
 
 .sidepanel-viewport {
+    flex: 1;
+    min-height: 0;
     width: 100%;
-    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#sidepanel .sidepanel-hover-image {
+/* #sidepanel .sidepanel-hover-image {
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
     outline: none;
     border: none;
+} */
+
+#sidepanel .sidepanel-hover-image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    outline: none;
+    border: none;
+    z-index: 5;
 }
 
 #sidepanel p {
@@ -157,33 +197,37 @@ img {
 }
 
 .sidepanel-nav {
+    /* delete this to make it "take space" */
     position: absolute;
-    bottom: 20px;
-    /* left: 0; */
-    right: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    z-index: 10;
+    bottom: 0px;
 
-    border: red 1px dashed;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    height: 35px;
+    width: 100%;
+
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: white; */
 }
 
 .sp-prev, .sp-next {
     background: none;
     border: none;
-    font-size: 40pt;
-    line-height: 1;
+    font-size: 22pt;
+    line-height: 0.7;
     cursor: pointer;
     color: black;
+    /* border: red 1px dashed; */
+
 }
 
 .sp-prev:hover, .sp-next:hover {
     color: grey;
 }
 
-.sp-dots {
+/* .sp-dots {
     display: flex;
     gap: 6px;
 }
@@ -191,13 +235,12 @@ img {
 .sp-dot {
     width: 8px;
     height: 8px;
-    /* border-radius: 50%; */
     background: rgba(0, 0, 0, 0.3);
 }
 
 .sp-dot.active {
     background: black;
-}
+} */
 
 .sketch-container {
     width: 100%;
@@ -281,6 +324,9 @@ dt{
         width: 100%;
         left: 0;
         right: 0;
+    }
+    body.flipped nav {
+        flex-direction: row;
     }
     #sidepanel { display: none; }
     #flip-layout{display: none;}
