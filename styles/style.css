@@ -68,6 +68,20 @@ main{
 
 }
 
+#maincontent p {
+    max-height: 100vh;
+    max-width: 100%;
+    overflow-y: auto;
+    padding: 30px;
+    /* font-size: 3.5vw; */
+    font-size: 18px;
+
+    /* border: red solid 1px; */
+
+    background-color: rgb(224, 224, 224);
+
+}
+
 
 .awarded, .awarded h2{
     background-color: rgb(146, 146, 146);
@@ -176,12 +190,16 @@ dt{
     background-color: rgb(74, 71, 255);    
 }
 
+.mobileOnly {display: none;}
+
+
 @media (max-width: 980px) {
     main {
         grid-template-columns: 1fr;
     }
     #sidepanel { display: none; }
     nav { max-width: 100%; }
+    .mobileOnly {display: block;}
 }
 
 

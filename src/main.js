@@ -110,6 +110,11 @@ function ProjectlHtml(project){
         awardsHtml += '</ul></section>'
     }
 
+    let aboutHtml = ''; // mobile only
+
+    if (project.about) {
+        aboutHtml = `<p class="mobileOnly">${project.about}</p>`;
+    }
 
 
 
@@ -129,6 +134,7 @@ function ProjectlHtml(project){
                 ${categoriesHtml}
             </ul>
             ${contentHtml}
+            ${aboutHtml}
             ${awardsHtml}
             ${creditsHtml}
         </article>
@@ -139,6 +145,9 @@ function ProjectlHtml(project){
 
 function ProjectListHtml(projects){
     let projectListHtml = '';
+
+    projectListHtml += `<p class="mobileOnly">${dict.content.homepage[lang]}</p>`
+
     for (const key in projects){
 
             const work = projects[key];
@@ -189,7 +198,7 @@ function make(path){
         // home (worklist) ------------------------------------------------------------------------------------------------
 
         // UPDATE DOM
-        sidepanelText.innerHTML = dict.content.homepage[lang]
+        sidepanelText.innerHTML = dict.content.homepage[lang];
         app.innerHTML = ProjectListHtml(works);
         
         // PLAY ON HOVER
