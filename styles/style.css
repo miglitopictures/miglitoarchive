@@ -80,6 +80,14 @@ body.flipped nav {
     right: 0;
 }
 
+body.flipped .sidepanel-nav{
+    flex-direction: row-reverse;
+}
+
+body.flipped .sidepanel-viewport-nav  {
+    flex-direction: row;
+}
+
 #maincontent {
 
     order: 1;
@@ -165,6 +173,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 /* #sidepanel .sidepanel-hover-image {
@@ -175,6 +184,29 @@ img {
     outline: none;
     border: none;
 } */
+
+.bt-lang {
+    /* border: 1px red solid; */
+    display: flex;
+    gap: 5pt;
+    font-size: 12pt;
+    color: black;
+}
+
+button{
+    border: none;
+    font-size: inherit;
+    color: rgb(102, 102, 102);
+    background-color: transparent;
+}
+
+button:hover{
+    color: black;
+}
+
+button.active{
+    color: black;
+}
 
 #sidepanel .sidepanel-hover-image {
     position: absolute;
@@ -198,8 +230,8 @@ img {
 
 .sidepanel-nav {
     /* delete this to make it "take space" */
-    position: absolute;
-    bottom: 0px;
+    /* position: absolute;
+    top: 0px; */
 
     flex-shrink: 0;
     display: flex;
@@ -209,22 +241,42 @@ img {
 
     align-items: center;
     justify-content: space-between;
+    background-color: white;
+    /* border: red 1px solid;        */
+}
+
+.sidepanel-viewport-nav {
+    /* delete this to make it "take space" */
+    position: absolute;
+    bottom: 0px;
+
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row-reverse;
+    height: 35px;
+    width: 100%;
+
+    align-items: center;
+    justify-content: space-between;
     /* background-color: white; */
+    /* border: red 1px solid;        */
 }
 
 .sp-prev, .sp-next {
     background: none;
     border: none;
-    font-size: 22pt;
+    font-size: 30pt;
     line-height: 0.7;
     cursor: pointer;
     color: black;
+    background-color: var(--main-color);
     /* border: red 1px dashed; */
 
 }
 
 .sp-prev:hover, .sp-next:hover {
-    color: grey;
+    color: var(--main-color);
+    background-color: black;
 }
 
 /* .sp-dots {

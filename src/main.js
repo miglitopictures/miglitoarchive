@@ -11,19 +11,18 @@ let currentEntries = [];
 let currentIndex = 0;
 
 // setup language NOTE
-let lang = "en";
+let lang = localStorage.getItem('lang') || "en";
 
 // setup flipping
-const flipButton = document.querySelector('#flip-layout');
+const flipButton = document.getElementById('flip-layout');
 
 // restore preference on load
-if (localStorage.getItem('layoutFlipped') === 'true') {
-    document.body.classList.add('flipped');
-}
-
+// if (localStorage.getItem('layoutFlipped') === 'true') {
+//     document.body.classList.add('flipped');
+// }
 flipButton.addEventListener('click', () => {
     document.body.classList.toggle('flipped');
-    localStorage.setItem('layoutFlipped', document.body.classList.contains('flipped'));
+    // localStorage.setItem('layoutFlipped', document.body.classList.contains('flipped'));
 });
 
 //setup title randomization
@@ -189,6 +188,15 @@ function ProjectListHtml(projects){
             ${restParagraph ? `<button class="mobile-about-toggle" aria-expanded="false">+ read more</button>` : ''}
         </section>
     `;
+
+    projectListHtml += `
+        <section class="filters">
+            <button>ALL</button>
+            <button>DESIGN</button>
+            <button>MOTION</button>
+            <button>CODE</button>
+        </section>
+    `;
     
     // i want to make this homepage text only show the first x lines and add a + expand button that opens the div
     // projectListHtml += `<p class="mobileOnly expandable">${dict.content.homepage[lang]}</p>`?
@@ -257,14 +265,19 @@ function MobileSidepanelHtml(entries){
     return html;
 }
 
+function setLang(selectedLang){
+    lang = selectedLang;
+    localStorage.setItem('lang', selectedLang);
+    make(location.pathname);
+}
+window.setLang = setLang;
+
 function makeSidepanelNav(entries, index){
     // pega o nav do painel
     const spNav = document.querySelector('.sidepanel-nav');
+    const spViewportNav = document.querySelector('.sidepanel-viewport-nav');
     // se nao tem multiplos entries (paginas em sidepanel), nao temos nav. return!
-    if (entries.length <= 1) {
-        spNav.innerHTML = '';
-        return;
-    }
+    
 
     let dotsHtml = '';
     // {   // ig carrossel style dots
@@ -277,34 +290,56 @@ function makeSidepanelNav(entries, index){
     //     dotsHtml += '</div>';
     // }
 
-    let nextPreviousHtml = `
+    let nextPreviousHtml = '';
+    const hasNextPrevArrow = entries.length > 1;
+    if (hasNextPrevArrow) {
+        nextPreviousHtml = `
+            <div>
+                <button class="sp-prev" aria-label="Previous">&lt</button>
+                ${dotsHtml}
+                <button class="sp-next" aria-label="Next">&gt</button>
+            </div>
+        `
+    }
+
+    let downloadCVHtml = `
         <div>
-            <button class="sp-prev" aria-label="Previous">&lt</button>
-            ${dotsHtml}
-            <button class="sp-next" aria-label="Next">&gt</button>
+            <button>DOWNLOAD CV</button>
         </div>
     `
 
     let changeLangHtml = `
-        <div><a>PT</a>/<a>EN</a></div>
+        <div class="bt-lang">
+            <button data-lang="pt" onclick="setLang('pt')">PT</button>/<button data-lang="en" onclick="setLang('en')">EN</button>
+        </div>
     `
 
 
     spNav.innerHTML = `
         ${changeLangHtml}
+        ${downloadCVHtml}
+    `
+
+    spViewportNav.innerHTML = `
         ${nextPreviousHtml}
     `
 
-    spNav.querySelector('.sp-prev').onclick = (e) => {
-        currentIndex = (index - 1 + entries.length) % entries.length;
-        makeSidepanelPage(entries, currentIndex);
-        // e.stopPropagation();
-    }
+    spNav.querySelectorAll('.bt-lang button').forEach((bt)=>{
+        bt.classList.toggle('active', bt.dataset.lang == lang);
+    })
 
-    spNav.querySelector('.sp-next').onclick = (e) => {
-        currentIndex = (index + 1) % entries.length;
-        makeSidepanelPage(entries, currentIndex);
-        // e.stopPropagation();
+    if (hasNextPrevArrow) {
+        spViewportNav.querySelector('.sp-prev').onclick = (e) => {
+            currentIndex = (index - 1 + entries.length) % entries.length;
+            makeSidepanelPage(entries, currentIndex);
+            // e.stopPropagation();
+        }
+    
+        spViewportNav.querySelector('.sp-next').onclick = (e) => {
+            currentIndex = (index + 1) % entries.length;
+            makeSidepanelPage(entries, currentIndex);
+            // e.stopPropagation();
+        }
     }
 }
 
