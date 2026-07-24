@@ -196,7 +196,7 @@ img {
 button{
     border: none;
     font-size: inherit;
-    color: rgb(102, 102, 102);
+    color: rgba(0, 0, 0, 0.5);
     background-color: transparent;
 }
 
@@ -230,8 +230,8 @@ button.active{
 
 .sidepanel-nav {
     /* delete this to make it "take space" */
-    /* position: absolute;
-    top: 0px; */
+    position: absolute;
+    top: 0px;
 
     flex-shrink: 0;
     display: flex;
@@ -241,7 +241,7 @@ button.active{
 
     align-items: center;
     justify-content: space-between;
-    background-color: white;
+    background-color: transparent;
     /* border: red 1px solid;        */
 }
 
@@ -278,6 +278,20 @@ button.active{
     color: var(--main-color);
     background-color: black;
 }
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 20pt;
+    padding-right: 16px;
+}
+
+.filter-button.active {
+    background-color: black;
+    color: var(--main-color);
+}
+
 
 /* .sp-dots {
     display: flex;

@@ -6,7 +6,7 @@ export const works = {
         year: 2025,
         studio: "NOO",
         client: "Plau",
-        categories: ["design", "motion"],
+        categories: ["graphic design", "motion"],
 
         preview_thumb: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/750683240721445.6944516041736.png",
         preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1778525393/preview_histerica_zkc4v1.mp4", // bug no chrome
@@ -118,7 +118,7 @@ export const works = {
         year: 2025, 
         studio: "NOO",
         client: "Zoop",
-        categories: ["3d", "motion", "graphic design"],
+        categories: ["motion", "graphic design"],
 
         preview_thumb: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784295401/output_ewz1kj.jpg",
         preview_video: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1784295401/output_ewz1kj.mp4",
@@ -137,8 +137,24 @@ export const works = {
             "post-production direction": ["Marcio Sal"]
         },
 
-
-        about: "Zoop ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+        sidepanel: [
+            {
+                type: "p5",
+                src: "../sketches/stonecamp.js",
+                mobileMessage: {
+                    en: "Stonecamp has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+            {
+                type: "about",
+                text: {
+                    en: "Tap to pay ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Zoop ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            
+        ],
 
     },
 
@@ -177,8 +193,25 @@ export const works = {
             "project management": ["Capitão Foca"]
         },
 
-        about: "stonecamp ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
 
+        
     },
 
     
@@ -187,7 +220,7 @@ export const works = {
         year: 2024,
         studio: "NOO",
         client: "Plau",
-        categories: ["3d", "motion", "graphic design"],
+        categories: ["animation", "motion", "graphic design"],
 
         preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
         preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
@@ -204,8 +237,23 @@ export const works = {
             "project management": ["Consoante Soma de Sons"] // soud design and music
         },
 
-        about: "Kimura ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
-
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "sesc-jazz": {
@@ -228,7 +276,24 @@ export const works = {
             "web development": ["Grama"],
         },
 
-        about: "Estúdio Daó ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
+
     },
 
     "sesc-melhores-filmes": {
@@ -279,8 +344,23 @@ export const works = {
             "programming": [author],
         },
 
-        about: "Gamemaster Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
-
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "natal-coca-cola": {
@@ -301,8 +381,23 @@ export const works = {
             "animation": [author],
         },
 
-        about: "Coca-Cola Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
-
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "trident-filter": {
@@ -324,8 +419,23 @@ export const works = {
             "programming": [author, "Judd Buchannan", "Cadu Coelho"],
         },
 
-        about: "Trident Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
-
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
 
@@ -345,8 +455,23 @@ export const works = {
             "typography": ["Vick Falcão"],
         },
 
-        about: "Documentário Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
-
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "paladar": {
@@ -365,7 +490,24 @@ export const works = {
             "research": ["Vick Falcão", "Ryan Yves", author],
         },
 
-        about: "Mandinga Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
+
     },
 
     "apartamento": {
@@ -382,8 +524,23 @@ export const works = {
             "design": ["Ryan Yves", author],
         },
 
-        about: "João Cortez Award ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
-
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "ansif": {
@@ -400,8 +557,23 @@ export const works = {
             "design": ["Vick Falcão", author],
         },
 
-        about: "FUNAI's ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
-
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "marcelo-d2": {
@@ -433,8 +605,23 @@ export const works = {
             "plateau": ["Lucas Rabetine"],
         },
 
-        about: "D2 ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
-
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "catalogo2023": {
@@ -452,6 +639,24 @@ export const works = {
             "illustration": [author],
             "animation": [author],
         },
+
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "ponta-do-curral": {
@@ -470,6 +675,24 @@ export const works = {
             "design": ["Beatriz de Andrade", "Louise Favilla"],
             "illustration": [author],
         },
+
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "barin": {
@@ -486,7 +709,25 @@ export const works = {
         credits:{
             "art direction": ["Beatriz de Andrade"],
             "motion": [author, "Fernando Villela", "Natalha Maffra"], //
-        }
+        },
+
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "coquetel-molotov-2021": {
@@ -507,6 +748,24 @@ export const works = {
             "video editing": ["Ryan Yves", "Guilherme de Lima", author],
             "motion": ["Ryan Yves", "Guilherme de Lima", author],
         },
+
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 
     "cineorfao": {
@@ -525,6 +784,23 @@ export const works = {
             "graphic design": [author],
             "photography": ["Gabes"]
         },
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     }, //https://www.behance.net/gallery/91866521/2-Festival-CineOrfao-de-Cinema-Sem-Pais
 
     "painting-matter": {
@@ -542,5 +818,23 @@ export const works = {
             "programming": [author],
             "splash screen artwork": ["Ryan Yves"],
         },
+
+        sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
+            {
+                type: "p5",
+                src: "../sketches/histerica.js",
+                mobileMessage: {
+                    en: "Histerica has a interactive test — test on desktop.",
+                    pt: "Uma ferramenta de teste — teste no computador."
+                }
+            },
+        ],
     },
 }

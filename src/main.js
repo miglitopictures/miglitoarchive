@@ -4,6 +4,8 @@ import { dict } from "../data/dictionary.js";
 // import functionality
 import { makeDraggable } from "./draggable.js";
 
+let currentFilter = '';
+
 
 // sidepannel sketched and entries
 let currentSketch = null;
@@ -189,14 +191,15 @@ function ProjectListHtml(projects){
         </section>
     `;
 
-    projectListHtml += `
-        <section class="filters">
-            <button>ALL</button>
-            <button>DESIGN</button>
-            <button>MOTION</button>
-            <button>CODE</button>
-        </section>
-    `;
+    if (currentFilter != '') {
+
+        projectListHtml += `
+            <section class="filters">
+                <p>${dict.categories[currentFilter][lang].toUpperCase()}</p>
+                <button>x</button>
+            </section>
+        `;
+    }
     
     // i want to make this homepage text only show the first x lines and add a + expand button that opens the div
     // projectListHtml += `<p class="mobileOnly expandable">${dict.content.homepage[lang]}</p>`?
@@ -213,12 +216,17 @@ function ProjectListHtml(projects){
 
             const work = projects[key];
 
+            // se a categoria nao bater, nao renderizar projeto
+            if (currentFilter && !work.categories.includes(currentFilter)) {
+                continue;
+            }
+
             // make categories
 
             let categoriesHtml = '';
 
             work.categories.forEach((categorie) => {
-                categoriesHtml += `<li><button>${dict.categories[categorie][lang]}</button></li>`
+                categoriesHtml += `<li><button data-cat="${categorie}" class="filter-button ${categorie == currentFilter ? 'active': ''}">${dict.categories[categorie][lang]}</button></li>`
             })
 
             //  make work preview div
@@ -303,7 +311,7 @@ function makeSidepanelNav(entries, index){
     }
 
     let downloadCVHtml = `
-        <div>
+        <div class='bt-curriculum'>
             <button>DOWNLOAD CV</button>
         </div>
     `
@@ -323,6 +331,10 @@ function makeSidepanelNav(entries, index){
     spViewportNav.innerHTML = `
         ${nextPreviousHtml}
     `
+
+    spNav.querySelector('.bt-curriculum').addEventListener('click', () => {
+        window.print();
+    });
 
     spNav.querySelectorAll('.bt-lang button').forEach((bt)=>{
         bt.classList.toggle('active', bt.dataset.lang == lang);
@@ -398,9 +410,34 @@ function make(path){
         currentIndex = 0;
         makeSidepanelPage(currentEntries, 0);
 
+        
         // homepage maincontent
         maincontent.innerHTML = ProjectListHtml(works);
         maincontent.scrollTop = 0;
+
+        
+        
+        const categorieButtons = maincontent.querySelectorAll('li button')
+        categorieButtons.forEach((catBt) => {
+            catBt.addEventListener('click', () => {
+                if (currentFilter != catBt.dataset.cat){
+                    currentFilter = catBt.dataset.cat;
+                    make(path)
+                } else {
+                    currentFilter = '';
+                    make(path)
+                }
+                console.log(currentFilter);
+            })
+        })
+        
+        const filterClearBtn = maincontent.querySelector('.filters button');
+        if (filterClearBtn) {
+            filterClearBtn.addEventListener('click', () => {
+                currentFilter = '';
+                make(path);
+            });
+        }
 
         // mobile about expand/collapse
         const aboutToggle = document.querySelector('.mobile-about button');
