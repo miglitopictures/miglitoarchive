@@ -40,8 +40,14 @@ titleElement.addEventListener('mouseleave', () => {
     titleElement.textContent = titleText;
 });
 
-// setup draggable elements
+// setup hamburguer menu
 
+const hambMenuButton = document.getElementById('hamb-menu-bt')
+
+hambMenuButton.addEventListener('click',() => {
+    let hambMenu = document.getElementById('hamb-menu')
+    if (hambMenu) hambMenu.classList.toggle('hamb-open')
+})
 
 // setup observer for fade in
 const observerOptions = {
@@ -141,6 +147,7 @@ function ProjectlHtml(project){
 
 
     const projectHtml = `
+        ${HamburguerMenuHtml()}
         <article id="project-content">
             <h2>${project.title}${project.awards ? '*' : ''}</h2>
             <time datetime="${project.year}">${project.year}</time>
@@ -165,8 +172,23 @@ function ProjectlHtml(project){
     return projectHtml;
 }
 
+function HamburguerMenuHtml() {
+    return `
+        <ul id="hamb-menu" class="mobileOnly">
+            <li class='bt-curriculum'>
+                <button>DOWNLOAD CV</button>
+            </li>
+            <li class="bt-lang">
+                <button data-lang="pt" onclick="setLang('pt')">PT</button>/<button data-lang="en" onclick="setLang('en')">EN</button>
+            </li>
+        </ul>
+    `
+}
+
 function ProjectListHtml(projects){
     let projectListHtml = '';
+
+    projectListHtml += HamburguerMenuHtml();
 
     const fullParagraph = dict.content.homepage[lang];
     let firstParagraph, restParagraph;
@@ -191,7 +213,7 @@ function ProjectListHtml(projects){
         </section>
     `;
 
-    if (currentFilter != '') {
+    if (currentFilter && currentFilter != '') {
 
         projectListHtml += `
             <section class="filters">
@@ -274,9 +296,11 @@ function MobileSidepanelHtml(entries){
 }
 
 function setLang(selectedLang){
-    lang = selectedLang;
-    localStorage.setItem('lang', selectedLang);
-    make(location.pathname);
+    if (lang != selectedLang) {
+        lang = selectedLang;
+        localStorage.setItem('lang', selectedLang);
+        make(location.pathname);
+    }
 }
 window.setLang = setLang;
 
@@ -438,6 +462,9 @@ function make(path){
                 make(path);
             });
         }
+
+        // hamb menu button
+        // setup hamburguer menu
 
         // mobile about expand/collapse
         const aboutToggle = document.querySelector('.mobile-about button');

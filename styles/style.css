@@ -88,6 +88,25 @@ body.flipped .sidepanel-viewport-nav  {
     flex-direction: row;
 }
 
+#hamb-menu {
+    display: none;
+    position: absolute;
+    width: 100%;
+    /* border: red 1px solid; */
+    z-index: 90;
+
+    background-color: white;
+}
+
+#hamb-menu li {
+    /* border:black 1px solid; */
+    display: block;
+}
+
+#hamb-menu.hamb-open {
+    display: block;
+}
+
 #maincontent {
 
     order: 1;
