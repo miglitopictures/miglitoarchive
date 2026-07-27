@@ -3,7 +3,7 @@
     */
 
 * {
-    --main-color: rgb(187, 255, 0);
+    --main-color: rgb(30, 255, 0);
     --content-width: max(600px, 35vw);
     --nav-height: 60px;
     --padding-horizontal: 15px;
@@ -322,6 +322,23 @@ dt {
     cursor: pointer;
 }
 
+.mobile-note {
+    padding: var(--padding-horizontal);
+    font-size: 20pt;
+
+}
+
+.sketch-mobile-note {
+    padding: var(--padding-horizontal);
+    background-color: var(--main-color);
+
+}
+
+.awards {
+    padding: var(--padding-horizontal);
+    background-color: grey;
+    color: var(--main-color);
+}
 
 /* 
    Side Panel
@@ -461,6 +478,8 @@ body.flipped .sidepanel-viewport-nav {
     align-items: center;
     /* height: var(--nav-height); */
     font-size: 14pt;
+    background-color: black;
+    color: var(--main-color);
 }
 
 .filters p {
@@ -469,6 +488,9 @@ body.flipped .sidepanel-viewport-nav {
 
 .filters button {
     /* height: var(--nav-height); */
+    color: black;
+   background-color: var(--main-color);
+
     width: var(--nav-height);
 }
 
