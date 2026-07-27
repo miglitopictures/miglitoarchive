@@ -179,7 +179,7 @@ function HamburguerMenuHtml() {
                 <button>DOWNLOAD CV</button>
             </li>
             <li class="bt-lang">
-                <button data-lang="pt" onclick="setLang('pt')">PT</button>/<button data-lang="en" onclick="setLang('en')">EN</button>
+                <button data-lang="pt" class="${lang == 'pt' ? 'active' : ''}" onclick="setLang('pt')">PT</button>/<button data-lang="en" class="${lang == 'en' ? 'active' : ''}" onclick="setLang('en')">EN</button>
             </li>
         </ul>
     `

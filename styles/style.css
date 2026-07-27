@@ -89,22 +89,64 @@ body.flipped .sidepanel-viewport-nav  {
 }
 
 #hamb-menu {
-    display: none;
     position: absolute;
+    top: 35px;
+    left: 0;
     width: 100%;
-    /* border: red 1px solid; */
     z-index: 90;
 
-    background-color: white;
-}
+    background-color: rgb(198, 198, 198);
+    overflow: hidden;
 
-#hamb-menu li {
-    /* border:black 1px solid; */
-    display: block;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: max-height 0.3s ease, opacity 0.2s ease, transform 0.25s ease;
 }
 
 #hamb-menu.hamb-open {
-    display: block;
+    max-height: 200px; /* generous cap — comfortably above actual content height */
+    opacity: 1;
+    transform: translateY(0);
+    /* border-bottom: 1px solid black; */
+}
+
+#hamb-menu li {
+    display: flex;
+    align-items: center;
+    height: 35px; /* bigger tap target than the 35px nav rhythm — this is touch UI */
+    padding: 0 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15); /* thin dividers instead of your old boxed border:red debug style */
+}
+
+#hamb-menu li:first-child {
+    border-top: none;
+}
+
+#hamb-menu button {
+    background-color: transparent;
+    color: black;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0;
+    transition: color 0.15s ease;
+}
+
+#hamb-menu .bt-lang {
+    color: black; /* overrides the global .bt-lang color:black inherited already, kept explicit for clarity */
+}
+
+#hamb-menu button:hover {
+    color: var(--main-color);
+}
+
+#hamb-menu .bt-lang button.active {
+    color: black;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
 }
 
 #maincontent {
