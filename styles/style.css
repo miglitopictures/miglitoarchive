@@ -1,14 +1,16 @@
+/* 
+    Reset & Root Variables 
+    */
+
 * {
     --main-color: rgb(187, 255, 0);
     --content-width: max(600px, 35vw);
     --nav-height: 60px;
-    --padding-horizontal: 20px;
-
+    --padding-horizontal: 15px;
 
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-
 }
 
 html {
@@ -17,48 +19,63 @@ html {
     overflow: hidden;
 }
 
-nav {
-    overflow: visible;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--content-width);
-    max-width: 100%; /* safety clamp for very narrow viewports */
-    height: var(--nav-height);
-
-    padding: 0px var(--padding-horizontal) ;
-
-    background-color: var(--main-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
+img {
+    width: 100%;
+    display: block;
 }
 
-nav a{
+video {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: max-height 1.6s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+.mobileOnly {
+    display: none;
+}
+
+
+/*
+    Generic Buttons & Text Selection
+    */
+
+button {
+    border: none;
+    font-size: inherit;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+}
+
+button:hover {
     color: black;
-    text-decoration: none;
-    font-size: 20pt;
 }
 
-#site-title {
-    font-size: 20pt;
-    font-weight: bold;
+button.active {
+    color: black;
 }
 
-li {
-    display: inline;
-    list-style: none;
-    padding-right: 5px;
-}
-
-li button {
+::selection {
     background-color: var(--main-color);
-    border: 0px;
-    line-height: 1;
-    text-transform: uppercase;
+    color: black;
 }
-main{
+
+/* Firefox needs this vendor-prefixed version too, for older versions */
+::-moz-selection {
+    background-color: var(--main-color);
+    color: black;
+}
+
+
+/* 
+   Layout — Main Grid
+    */
+
+main {
     display: grid;
     grid-template-columns: var(--content-width) 1fr;
     height: 100vh;
@@ -77,6 +94,55 @@ body.flipped #sidepanel {
 }
 
 
+/* 
+   Top Navigation
+    */
+
+nav {
+    overflow: visible;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--content-width);
+    max-width: 100%; /* safety clamp for very narrow viewports */
+    height: var(--nav-height);
+
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    font-size: 20pt;
+    padding: 0px var(--padding-horizontal);
+}
+
+#site-title {
+    font-size: 20pt;
+    font-weight: bold;
+    line-height: 0.7;
+    height: var(--nav-height);
+    align-content: center;
+}
+
+#flip-layout {
+    color: var(--main-color);
+    background-color: black;
+    text-align: center;
+    align-content: center;
+    width: var(--nav-height);
+    height: var(--nav-height);
+}
+
+#flip-layout:hover {
+    color: white;
+    background-color: black;
+}
+
 
 body.flipped nav {
     flex-direction: row-reverse;
@@ -84,12 +150,33 @@ body.flipped nav {
     right: 0;
 }
 
-body.flipped .sidepanel-nav{
-    flex-direction: row-reverse;
+li {
+    display: inline;
+    list-style: none;
+    padding-right: 5px;
 }
 
-body.flipped .sidepanel-viewport-nav  {
-    flex-direction: row;
+li button {
+    background-color: var(--main-color);
+    border: 0px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+
+/* 
+   Hamburger Menu (mobile nav dropdown)
+    */
+#hamb-menu-bt {
+    text-align: center;
+    align-content: center;
+    width: var(--nav-height);
+    height: var(--nav-height);
+}
+
+#hamb-menu-bt.hamb-open {
+    background-color: black;
+    color: var(--main-color);
 }
 
 #hamb-menu {
@@ -98,6 +185,8 @@ body.flipped .sidepanel-viewport-nav  {
     left: 0;
     width: 100%;
     z-index: 90;
+
+    padding: 0px;
 
     background-color: rgb(198, 198, 198);
     overflow: hidden;
@@ -139,12 +228,12 @@ body.flipped .sidepanel-viewport-nav  {
     transition: color 0.15s ease;
 }
 
-#hamb-menu .bt-lang {
-    color: black; /* overrides the global .bt-lang color:black inherited already, kept explicit for clarity */
-}
-
 #hamb-menu button:hover {
     color: var(--main-color);
+}
+
+#hamb-menu .bt-lang {
+    color: black; /* overrides the global .bt-lang color:black inherited already, kept explicit for clarity */
 }
 
 #hamb-menu .bt-lang button.active {
@@ -154,8 +243,12 @@ body.flipped .sidepanel-viewport-nav  {
     text-underline-offset: 3px;
 }
 
-#maincontent {
 
+/* 
+   Main Content Column
+    */
+
+#maincontent {
     order: 1;
 
     overflow-y: auto;
@@ -164,22 +257,51 @@ body.flipped .sidepanel-viewport-nav  {
     margin-top: var(--nav-height);
 
     background-color: rgb(198, 198, 198);
-
 }
 
+hgroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: sticky;
+    top: 0px;
+    padding: 0px var(--padding-horizontal);
+    background-color: rgb(198, 198, 198);
+}
+time{
+    text-align: center;
+    align-content: center;
+}
+
+ul {
+    padding: 0px var(--padding-horizontal);
+}
+
+.awarded,
+.awarded hgroup {
+    background-color: rgb(146, 146, 146);
+    color: var(--main-color);
+}
+
+dt {
+    font-size: 10pt;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+
+/* -- Mobile "about" block -- */
+
 .mobile-about {
-    
     max-height: 100vh;
     max-width: 100%;
     overflow-y: auto;
     padding: var(--padding-horizontal);
     /* font-size: 3.5vw; */
-    
 
     /* border: red solid 1px; */
 
     background-color: rgb(224, 224, 224);
-
 }
 
 .mobile-about p {
@@ -193,7 +315,6 @@ body.flipped .sidepanel-viewport-nav  {
 .mobile-about button {
     background: none;
     border: none;
-    padding: 8px 30px 20px;
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
@@ -202,24 +323,9 @@ body.flipped .sidepanel-viewport-nav  {
 }
 
 
-.awarded, .awarded h2{
-    background-color: rgb(146, 146, 146);
-    color: var(--main-color);
-
-}
-
-h2 {
-    position: sticky;
-    top: 0px;
-    background-color: rgb(198, 198, 198);
-    padding: 0px var(--padding-horizontal);
-
-}
-
-img {
-    width: 100%;
-    display: block;
-}
+/* 
+   Side Panel
+    */
 
 #sidepanel {
     order: 2;
@@ -232,6 +338,22 @@ img {
     position: relative;
 }
 
+body.flipped .sidepanel-nav {
+    flex-direction: row-reverse;
+}
+
+body.flipped .sidepanel-viewport-nav {
+    flex-direction: row;
+}
+
+#sidepanel p {
+    max-height: 100vh;
+    max-width: 100%;
+    overflow-y: auto;
+    padding: 100px;
+    font-size: 3.5vw;
+}
+
 .sidepanel-viewport {
     flex: 1;
     min-height: 0;
@@ -241,38 +363,6 @@ img {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-}
-
-/* #sidepanel .sidepanel-hover-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    outline: none;
-    border: none;
-} */
-
-.bt-lang {
-    /* border: 1px red solid; */
-    display: flex;
-    gap: 5pt;
-    font-size: 12pt;
-    color: black;
-}
-
-button{
-    border: none;
-    font-size: inherit;
-    color: rgba(0, 0, 0, 0.5);
-    background-color: transparent;
-}
-
-button:hover{
-    color: black;
-}
-
-button.active{
-    color: black;
 }
 
 #sidepanel .sidepanel-hover-image {
@@ -287,14 +377,6 @@ button.active{
     z-index: 5;
 }
 
-#sidepanel p {
-    max-height: 100vh;
-    max-width: 100%;
-    overflow-y: auto;
-    padding: 100px;
-    font-size: 3.5vw;
-}
-
 .sidepanel-nav {
     /* delete this to make it "take space" */
     position: absolute;
@@ -304,13 +386,13 @@ button.active{
     display: flex;
     flex-direction: row;
     height: var(--nav-height);
-    padding: 0px var(--padding-horizontal) ;
+    padding: 0px var(--padding-horizontal);
     width: 100%;
 
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
-    /* border: red 1px solid;        */
+    /* border: red 1px solid; */
 }
 
 .sidepanel-viewport-nav {
@@ -321,45 +403,41 @@ button.active{
     flex-shrink: 0;
     display: flex;
     flex-direction: row-reverse;
-    height: 35px;
+    height: var(--nav-height);
+    gap: 0px;
     width: 100%;
 
     align-items: center;
     justify-content: space-between;
     /* background-color: white; */
-    /* border: red 1px solid;        */
+    /* border: red 1px solid; */
 }
 
-.sp-prev, .sp-next {
+.sidepanel-viewport-nav div {
+   display: flex;
+   flex-direction: row;
+   gap: 0px;
+}
+
+.sp-prev,
+.sp-next {
     background: none;
     border: none;
+    height: var(--nav-height);
+    width: var(--nav-height);
     font-size: 30pt;
     line-height: 0.7;
     cursor: pointer;
     color: black;
-    background-color: var(--main-color);
+    background-color: grey;
     /* border: red 1px dashed; */
-
 }
 
-.sp-prev:hover, .sp-next:hover {
+.sp-prev:hover,
+.sp-next:hover {
     color: var(--main-color);
     background-color: black;
 }
-
-.filters{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 20pt;
-    padding-right: 16px;
-}
-
-.filter-button.active {
-    background-color: black;
-    color: var(--main-color);
-}
-
 
 /* .sp-dots {
     display: flex;
@@ -376,6 +454,53 @@ button.active{
     background: black;
 } */
 
+.filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* height: var(--nav-height); */
+    font-size: 14pt;
+}
+
+.filters p {
+    padding: 0px var(--padding-horizontal);
+}
+
+.filters button {
+    /* height: var(--nav-height); */
+    width: var(--nav-height);
+}
+
+.filters button:hover {
+    /* height: var(--nav-height); */
+    background-color: white;
+}
+
+
+.filter-button {
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.filter-button.active {
+    background-color: black;
+    color: var(--main-color);
+}
+
+.bt-lang {
+    /* border: 1px red solid; */
+    display: flex;
+    gap: 5pt;
+    font-size: 12pt;
+    color: black;
+}
+
+
+/* 
+   Sketch / Canvas
+    */
+
 .sketch-container {
     width: 100%;
     height: 100%;
@@ -385,67 +510,55 @@ button.active{
     display: block;
 }
 
-.hidden {
-    display: none;
-}
 
-video {
-    
-    width: 100%;
-    object-fit: cover;
-    display: block;
-    transition: max-height 1.6s ease;
-}
+/* 
+   Fade-in Utility
+    */
 
-
-
-dt{
-    font-size: 10pt;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-/* Initial hidden state */
 .fade-in-element {
   opacity: 0;
   transition: opacity 0.6s ease-out;
 }
 
-/* State when visible */
 .fade-in-element.is-visible {
   opacity: 1;
 }
 
 
+/* 
+   Drag/Test Elements
+    */
 
-#testdiv{
+/* #testdiv {
     position: absolute;
     display: flex;
     flex-direction: column;
     z-index: 101;
     width: 600px;
     height: 400px;
-    background-color: tomato;    
+    background-color: tomato;
 }
 
-#testDragImg{
+#testDragImg {
     position: absolute;
     display: flex;
     flex-direction: column;
     z-index: 101;
     width: 600px;
     height: 400px;
-    background-color: tomato;    
+    background-color: tomato;
 }
 
-.dragArea{
+.dragArea {
     width: 100%;
     height: 40px;
-    background-color: rgb(74, 71, 255);    
-}
+    background-color: rgb(74, 71, 255);
+} */
 
-.mobileOnly {display: none;}
 
+/* 
+   Responsive — Mobile (max-width: 980px)
+    */
 
 @media (max-width: 980px) {
     main {
@@ -463,9 +576,14 @@ dt{
         flex-direction: row;
     }
     #sidepanel { display: none; }
-    #flip-layout{display: none;}
-    .mobileOnly {display: block;}
+    #flip-layout { display: none; }
+    .mobileOnly { display: block; }
 }
+
+
+/* 
+   Custom Scrollbars (#maincontent, #sidepanel p)
+    */
 
 /* Firefox (and anything without ::-webkit-scrollbar support) */
 @supports not selector(::-webkit-scrollbar) {
@@ -512,15 +630,4 @@ dt{
 #maincontent::-webkit-scrollbar-thumb:hover,
 #sidepanel p::-webkit-scrollbar-thumb:hover {
     background-color: var(--main-color);
-}
-
-::selection {
-    background-color: var(--main-color);
-    color: black;
-}
-
-/* Firefox needs this vendor-prefixed version too, for older versions */
-::-moz-selection {
-    background-color: var(--main-color);
-    color: black;
 }

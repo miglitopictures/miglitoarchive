@@ -12,6 +12,18 @@ export const dict = {
             en: "Download Resume",
             pt: "Baixar Currículo",
         },
+        "filter": {
+            en: "Filter",
+            pt: "Filtro",
+        },
+        "read-more": {
+            en: "read more",
+            pt: "leia mais",
+        },
+        "read-less": {
+            en: "read less",
+            pt: "leia menos",
+        },
     },
 
     titles: [

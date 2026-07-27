@@ -46,7 +46,10 @@ const hambMenuButton = document.getElementById('hamb-menu-bt')
 
 hambMenuButton.addEventListener('click',() => {
     let hambMenu = document.getElementById('hamb-menu')
-    if (hambMenu) hambMenu.classList.toggle('hamb-open')
+    if (hambMenu) {
+        hambMenu.classList.toggle('hamb-open')
+        hambMenuButton.classList.toggle('hamb-open')
+    }
 })
 
 // setup observer for fade in
@@ -77,7 +80,7 @@ function ProjectlHtml(project){
     let categoriesHtml = '';
 
     project.categories.forEach((categorie) => {
-        categoriesHtml += `<li><button>${dict.categories[categorie][lang]}</button></li>`
+        categoriesHtml += `<li><button class="filter-button">${dict.categories[categorie][lang]}</button></li>`
     });
 
     // make credits 
@@ -149,8 +152,13 @@ function ProjectlHtml(project){
     const projectHtml = `
         ${HamburguerMenuHtml()}
         <article id="project-content">
-            <h2>${project.title}${project.awards ? '*' : ''}</h2>
-            <time datetime="${project.year}">${project.year}</time>
+            <hgroup>
+                <h2>${project.title}${project.awards ? '*' : ''}</h2>
+                <time datetime="${project.year}">${project.year}</time>
+            </hgroup>
+            <ul>
+                ${categoriesHtml}
+            </ul>
             <video
                 ${project.preview_video ? `src="${project.preview_video}"` : ''}
                 poster="${project.preview_thumb}"
@@ -159,9 +167,6 @@ function ProjectlHtml(project){
                 playsinline
                 preload="metadata">
             </video>
-            <ul>
-                ${categoriesHtml}
-            </ul>
             ${contentHtml}
             ${aboutHtml}
             ${awardsHtml}
@@ -209,7 +214,7 @@ function ProjectListHtml(projects){
         <section class="mobileOnly mobile-about">
             <p class="mobile-about-first">${firstParagraph}</p>
             ${restParagraph ? `<p class="mobile-about-rest hidden">${restParagraph}</p>` : ''}
-            ${restParagraph ? `<button class="mobile-about-toggle" aria-expanded="false">+ read more</button>` : ''}
+            ${restParagraph ? `<button class="mobile-about-toggle" aria-expanded="false">+ ${dict.content["read-more"][lang]}</button>` : ''}
         </section>
     `;
 
@@ -217,7 +222,7 @@ function ProjectListHtml(projects){
 
         projectListHtml += `
             <section class="filters">
-                <p>${dict.categories[currentFilter][lang].toUpperCase()}</p>
+                <p>${dict.content.filter[lang]}: ${dict.categories[currentFilter][lang].toUpperCase()}</p>
                 <button>x</button>
             </section>
         `;
@@ -255,8 +260,10 @@ function ProjectListHtml(projects){
 
             projectListHtml += `
                 <article class="project-preview fade-in-element ${work.awards ? 'awarded' : ''}">
-                    <h2>${work.title}${work.awards ? '*' : ''}</h2>
-                    <time datetime="${work.year}">${work.year}</time>
+                    <hgroup>
+                        <h2>${work.title}${work.awards ? '*' : ''}</h2>
+                        <time datetime="${work.year}">${work.year}</time>
+                    </hgroup>
                     <ul aria-label="Categories">
                         ${categoriesHtml}
                     </ul>
@@ -309,18 +316,6 @@ function makeSidepanelNav(entries, index){
     const spNav = document.querySelector('.sidepanel-nav');
     const spViewportNav = document.querySelector('.sidepanel-viewport-nav');
     // se nao tem multiplos entries (paginas em sidepanel), nao temos nav. return!
-    
-
-    let dotsHtml = '';
-    // {   // ig carrossel style dots
-    //     dotsHtml = '<div class="sp-dots">';
-    //     entries.map( (_, i) => {
-    //         dotsHtml += `
-    //             <span class="sp-dot ${i == index ? 'active' : ''}"></span>
-    //         `;
-    //     });
-    //     dotsHtml += '</div>';
-    // }
 
     let nextPreviousHtml = '';
     const hasNextPrevArrow = entries.length > 1;
@@ -328,7 +323,6 @@ function makeSidepanelNav(entries, index){
         nextPreviousHtml = `
             <div>
                 <button class="sp-prev" aria-label="Previous">&lt</button>
-                ${dotsHtml}
                 <button class="sp-next" aria-label="Next">&gt</button>
             </div>
         `
@@ -473,7 +467,7 @@ function make(path){
         if (aboutToggle) {
             aboutToggle.addEventListener('click', () => {
                 const isExpanded = aboutRest.classList.toggle('hidden');
-                aboutToggle.textContent = isExpanded ? '+ read more' : '− show less';
+                aboutToggle.textContent = isExpanded ? `+ ${dict.content["read-more"][lang]}` : `− ${dict.content["read-less"][lang]}`;
                 aboutToggle.setAttribute('aria-expanded', !isExpanded);
             });
         }
@@ -542,6 +536,7 @@ function make(path){
 
     }
     
+    hambMenuButton.classList.remove('hamb-open');
     window.scrollTo(0, 0);
 
 }
