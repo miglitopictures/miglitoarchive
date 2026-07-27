@@ -1,6 +1,8 @@
 * {
     --main-color: rgb(187, 255, 0);
     --content-width: max(600px, 35vw);
+    --nav-height: 60px;
+    --padding-horizontal: 20px;
 
 
     margin: 0px;
@@ -22,7 +24,9 @@ nav {
     left: 0;
     width: var(--content-width);
     max-width: 100%; /* safety clamp for very narrow viewports */
-    height: 35px;
+    height: var(--nav-height);
+
+    padding: 0px var(--padding-horizontal) ;
 
     background-color: var(--main-color);
     display: flex;
@@ -90,7 +94,7 @@ body.flipped .sidepanel-viewport-nav  {
 
 #hamb-menu {
     position: absolute;
-    top: 35px;
+    top: var(--nav-height);
     left: 0;
     width: 100%;
     z-index: 90;
@@ -114,8 +118,9 @@ body.flipped .sidepanel-viewport-nav  {
 #hamb-menu li {
     display: flex;
     align-items: center;
-    height: 35px; /* bigger tap target than the 35px nav rhythm — this is touch UI */
-    padding: 0 16px;
+    height: var(--nav-height); /* bigger tap target than the 35px nav rhythm — this is touch UI */
+    padding: 0px var(--padding-horizontal);
+    /* padding: 0 16px; */
     border-top: 1px solid rgba(0, 0, 0, 0.15); /* thin dividers instead of your old boxed border:red debug style */
 }
 
@@ -156,7 +161,7 @@ body.flipped .sidepanel-viewport-nav  {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
-    margin-top: 35px;
+    margin-top: var(--nav-height);
 
     background-color: rgb(198, 198, 198);
 
@@ -167,7 +172,7 @@ body.flipped .sidepanel-viewport-nav  {
     max-height: 100vh;
     max-width: 100%;
     overflow-y: auto;
-    padding: 30px;
+    padding: var(--padding-horizontal);
     /* font-size: 3.5vw; */
     
 
@@ -207,6 +212,7 @@ h2 {
     position: sticky;
     top: 0px;
     background-color: rgb(198, 198, 198);
+    padding: 0px var(--padding-horizontal);
 
 }
 
@@ -297,7 +303,8 @@ button.active{
     flex-shrink: 0;
     display: flex;
     flex-direction: row;
-    height: 35px;
+    height: var(--nav-height);
+    padding: 0px var(--padding-horizontal) ;
     width: 100%;
 
     align-items: center;

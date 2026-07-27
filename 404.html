@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="miglito — design, animation & code">
+    <meta property="og:description" content="Selected work in design, animation, and interactive media by Miguel Duarte.">
+    <meta property="og:image" content="https://yoursite.com/assets/preview.jpg">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
     <title>miglito archive</title>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
@@ -10,16 +17,26 @@
 <body>
 
     <nav aria-label="Site navigation">
-        <h1>miglito archive</h1>
-        <a href="/">+</a>
+        <a href="/" id="site-title">miglito archive</a>
+        <a href="javascript:void(0)" id="flip-layout" aria-label="Flip layout">⇄</a>
+        <a href="javascript:void(0)" id="hamb-menu-bt" class="mobileOnly" aria-label="Hamburger Menu">≡</a>
     </nav>
 
     <main aria-live="polite" aria-label="Content">
-    </main>
-    <footer aria-label="Site footer">
+        <div id="maincontent"></div>
+        <div id="sidepanel">
+            <div class="sidepanel-nav"></div>
+            <div class="sidepanel-viewport"></div>
+            <div class="sidepanel-viewport-nav"></div>
+            <img class="sidepanel-hover-image hidden">
+        </div>
 
+    </main>
+
+    <footer aria-label="Site footer">
     </footer>
-    <script>
+
+     <script>
 
         // Para testar o redirecionamento no ambiente de desenvolvimento, utilize o servidor gh_pages_sever.py
 

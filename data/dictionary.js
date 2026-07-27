@@ -8,6 +8,10 @@ export const dict = {
             en: "This project has a interactive sketch, try it on your desktop.",
             pt: "Este projeto contém um sketch interativo, experimente no desktop."
         },
+        "cv-download": {
+            en: "Download Resume",
+            pt: "Baixar Currículo",
+        },
     },
 
     titles: [

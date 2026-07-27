@@ -176,7 +176,7 @@ function HamburguerMenuHtml() {
     return `
         <ul id="hamb-menu" class="mobileOnly">
             <li class='bt-curriculum'>
-                <button>DOWNLOAD CV</button>
+                <button>${dict.content["cv-download"][lang]}</button>
             </li>
             <li class="bt-lang">
                 <button data-lang="pt" class="${lang == 'pt' ? 'active' : ''}" onclick="setLang('pt')">PT</button>/<button data-lang="en" class="${lang == 'en' ? 'active' : ''}" onclick="setLang('en')">EN</button>
@@ -336,7 +336,7 @@ function makeSidepanelNav(entries, index){
 
     let downloadCVHtml = `
         <div class='bt-curriculum'>
-            <button>DOWNLOAD CV</button>
+            <button>${dict.content["cv-download"][lang].toUpperCase()}</button>
         </div>
     `
 
