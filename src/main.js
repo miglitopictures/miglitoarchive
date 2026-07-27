@@ -129,7 +129,7 @@ function ProjectlHtml(project){
     let awardsHtml = '';
 
     if (project.awards){
-        awardsHtml += '<section aria-label="Awards"><ul>'
+        awardsHtml += '<section class="awards" aria-label="Awards"><ul>'
         for (const award of project.awards){
             awardsHtml += `
                 <li>${award.name}</li>
@@ -283,7 +283,7 @@ function MobileSidepanelHtml(entries){
     entries.forEach((entry) => {
         switch (entry.type) {
             case 'about':
-                html += `<p class="mobileOnly">${entry.text[lang]}</p>`
+                html += `<p class="mobileOnly sidepanel-about-mobile">${entry.text[lang]}</p>`
                 break;
             case 'p5':
                 const message = entry.mobileMessage ? entry.mobileMessage[lang] :  dict.content["sketch-mobile-fallback"][lang];

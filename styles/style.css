@@ -1,13 +1,89 @@
-* {
-    --main-color: rgb(187, 255, 0);
-    --content-width: max(600px, 35vw);
+/* ==========================================================================
+   MIGLITO ARCHIVE — stylesheet
+   Brutalist/functional: flat color blocks, zero border-radius, hard edges.
 
+   Sections:
+     1. Custom Properties & Reset
+     2. Accessibility
+     3. Base Elements
+     4. Page Layout (grid + flip mechanic)
+     5. Navigation Bar
+     6. Category Tags & Filters
+     7. Homepage (about panel + project list)
+     8. Project Detail Page (title, video, awards, credits, mobile fallback)
+     9. Sidepanel (desktop)
+    10. Sketch Embeds
+    11. Utility Classes
+    12. Dev/Debug (leftover test elements — flagged below)
+    13. Responsive (mobile breakpoint)
+    14. Scrollbar
+   ========================================================================== */
+
+
+/* ============ 1. Custom Properties & Reset ============ */
+
+* {
+    /* --- palette --- */
+    --main-color: rgb(187, 255, 0);      /* the one brand accent — lime */
+    --grey-surface: rgb(198, 198, 198);  /* #maincontent, hamburger menu, sticky h2 bg */
+    --grey-panel: rgb(224, 224, 224);    /* #sidepanel, .mobile-about, mobile fallback blocks */
+    --grey-muted: rgb(146, 146, 146);    /* .awarded badge background */
+
+    /* --- layout constants --- */
+    --content-width: max(600px, 35vw);   /* sidepanel / nav width on desktop */
+    --nav-height: 35px;                  /* nav bar height — also drives the hamburger
+                                             menu offset, both sidepanel nav bars, and
+                                             #maincontent's top offset. change once here. */
+
+    /* --- spacing (only values reused in 2+ places are variables — anything
+       used once stays a literal so this list doesn't drift from the CSS) --- */
+    --gutter-sm: 16px;   /* sidepanel-nav, sidepanel-viewport-nav, hamb-menu li, filters */
+    --gutter-md: 24px;   /* mobile fallback blocks, awards block */
+    --gutter-lg: 30px;   /* .mobile-about and its children — the mobile page gutter */
+
+    /* --- motion --- */
+    --ease-snap: cubic-bezier(.65, 0, .35, 1);
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+    --dur-fast: 0.15s;
+    --dur-base: 0.3s;
+    --dur-slow: 0.5s;
 
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-
 }
+
+
+/* ============ 2. Accessibility ============ */
+
+/* brutalist focus state — a thick offset lime block instead of the default
+   ring, loud on purpose so keyboard nav reads as part of the design language,
+   not an accessibility afterthought bolted on */
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--main-color);
+    outline-offset: 2px;
+}
+
+/* nav links sit directly on the lime bar — lime-on-lime would disappear,
+   so fall back to black there */
+nav a:focus-visible {
+    outline-color: black;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ============ 3. Base Elements ============ */
 
 html {
     font-family: Arial, Helvetica, sans-serif;
@@ -15,31 +91,16 @@ html {
     overflow: hidden;
 }
 
-nav {
-    overflow: visible;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--content-width);
-    max-width: 100%; /* safety clamp for very narrow viewports */
-    height: 35px;
-
-    background-color: var(--main-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
+img {
+    width: 100%;
+    display: block;
 }
 
-nav a{
-    color: black;
-    text-decoration: none;
-    font-size: 20pt;
-}
-
-#site-title {
-    font-size: 20pt;
-    font-weight: bold;
+video {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: max-height 1.6s ease;
 }
 
 li {
@@ -48,17 +109,63 @@ li {
     padding-right: 5px;
 }
 
-li button {
-    background-color: var(--main-color);
-    border: 0px;
-    line-height: 1;
-    text-transform: uppercase;
+button {
+    border: none;
+    font-size: inherit;
+    color: rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    cursor: pointer;
+    transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease;
 }
-main{
+
+button:hover {
+    color: black;
+}
+
+button.active {
+    color: black;
+}
+
+::selection {
+    background-color: var(--main-color);
+    color: black;
+}
+
+/* Firefox needs this vendor-prefixed version too, for older versions */
+::-moz-selection {
+    background-color: var(--main-color);
+    color: black;
+}
+
+
+/* ============ 4. Page Layout (grid + flip mechanic) ============ */
+
+main {
     display: grid;
     grid-template-columns: var(--content-width) 1fr;
     height: 100vh;
 }
+
+#maincontent {
+    order: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-top: var(--nav-height);
+    background-color: var(--grey-surface);
+}
+
+#sidepanel {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: var(--grey-panel);
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- layout flip: everything that swaps when body.flipped toggles,
+   kept together so the whole mechanic is visible in one place --- */
 
 body.flipped main {
     grid-template-columns: 1fr var(--content-width);
@@ -72,30 +179,97 @@ body.flipped #sidepanel {
     order: 1;
 }
 
-
-
 body.flipped nav {
     flex-direction: row-reverse;
     left: auto;
     right: 0;
 }
 
-body.flipped .sidepanel-nav{
+body.flipped .sidepanel-nav {
     flex-direction: row-reverse;
 }
 
-body.flipped .sidepanel-viewport-nav  {
+body.flipped .sidepanel-viewport-nav {
     flex-direction: row;
+}
+
+
+/* ============ 5. Navigation Bar ============ */
+
+nav {
+    overflow: visible;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--content-width);
+    max-width: 100%; /* safety clamp for very narrow viewports */
+    height: var(--nav-height);
+
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+    font-size: 20pt;
+    transition: opacity var(--dur-fast) ease;
+}
+
+nav a:hover {
+    opacity: 0.55;
+}
+
+#site-title {
+    font-size: 20pt;
+    font-weight: bold;
+    transition: letter-spacing var(--dur-base) var(--ease-out);
+}
+
+/* the title text-swap on hover is handled in JS — this just gives the
+   swap somewhere to land instead of popping in flat */
+#site-title:hover {
+    letter-spacing: 0.02em;
+}
+
+#flip-layout {
+    display: inline-block;
+    transition: transform var(--dur-base) var(--ease-snap);
+}
+
+#flip-layout:hover {
+    transform: scale(1.15);
+}
+
+/* the icon itself mirrors when the layout flips — the control demonstrates
+   its own function instead of just labeling it */
+body.flipped #flip-layout {
+    transform: scaleX(-1);
+}
+
+body.flipped #flip-layout:hover {
+    transform: scaleX(-1) scale(1.15);
+}
+
+#hamb-menu-bt {
+    transition: transform var(--dur-base) var(--ease-snap);
+}
+
+#hamb-menu-bt:hover {
+    transform: scale(1.15);
 }
 
 #hamb-menu {
     position: absolute;
-    top: 35px;
+    top: var(--nav-height);
     left: 0;
     width: 100%;
     z-index: 90;
 
-    background-color: rgb(198, 198, 198);
+    background-color: var(--grey-surface);
     overflow: hidden;
 
     max-height: 0;
@@ -108,15 +282,19 @@ body.flipped .sidepanel-viewport-nav  {
     max-height: 200px; /* generous cap — comfortably above actual content height */
     opacity: 1;
     transform: translateY(0);
-    /* border-bottom: 1px solid black; */
 }
 
 #hamb-menu li {
     display: flex;
     align-items: center;
-    height: 35px; /* bigger tap target than the 35px nav rhythm — this is touch UI */
-    padding: 0 16px;
-    border-top: 1px solid rgba(0, 0, 0, 0.15); /* thin dividers instead of your old boxed border:red debug style */
+    height: var(--nav-height); /* touch-friendly tap target, matched to the nav rhythm */
+    padding: 0 var(--gutter-sm);
+    border-top: 1px solid rgba(0, 0, 0, 0.15); /* thin dividers instead of the old boxed border:red debug style */
+    transition: background-color var(--dur-fast) ease;
+}
+
+#hamb-menu li:active {
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
 #hamb-menu li:first-child {
@@ -134,97 +312,241 @@ body.flipped .sidepanel-viewport-nav  {
     transition: color 0.15s ease;
 }
 
-#hamb-menu .bt-lang {
-    color: black; /* overrides the global .bt-lang color:black inherited already, kept explicit for clarity */
-}
-
 #hamb-menu button:hover {
     color: var(--main-color);
 }
 
+#hamb-menu .bt-lang {
+    color: black; /* overrides the global .bt-lang color:black inherited already, kept explicit for clarity */
+}
+
 #hamb-menu .bt-lang button.active {
-    color: black;
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 3px;
 }
 
-#maincontent {
 
-    order: 1;
+/* ============ 6. Category Tags & Filters ============ */
 
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-
-    margin-top: 35px;
-
-    background-color: rgb(198, 198, 198);
-
+/* category tags — both the static list on a project page and the
+   clickable filter tags on the homepage list. Small tracked-out caps
+   read as a spec label rather than a shout. The lime background here
+   comes from this rule; inside #hamb-menu it's overridden by the
+   ID-scoped #hamb-menu button rule above, which wins on specificity */
+li button {
+    background-color: var(--main-color);
+    border: 0;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    transition: transform var(--dur-fast) ease;
 }
 
+li button:active {
+    transform: scale(0.92);
+}
+
+.filters {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    padding: 10px var(--gutter-sm);
+}
+
+.filter-button {
+    transition: color var(--dur-fast) ease;
+}
+
+.filter-button.active {
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: var(--main-color);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+
+/* ============ 7. Homepage (about panel + project list) ============ */
+
 .mobile-about {
-    
     max-height: 100vh;
     max-width: 100%;
     overflow-y: auto;
-    padding: 30px;
-    /* font-size: 3.5vw; */
-    
-
-    /* border: red solid 1px; */
-
-    background-color: rgb(224, 224, 224);
-
+    padding: var(--gutter-lg);
+    background-color: var(--grey-panel);
 }
 
 .mobile-about p {
     font-size: 22pt;
 }
 
-.mobile-about-rest.hidden {
-    display: none;
-}
-
 .mobile-about button {
     background: none;
     border: none;
-    padding: 8px 30px 20px;
+    padding: 8px var(--gutter-lg) 20px;
     font-size: 14px;
     font-weight: 600;
     text-transform: uppercase;
     color: black;
     cursor: pointer;
+    transition: color var(--dur-fast) ease, letter-spacing var(--dur-base) ease;
+}
+
+.mobile-about button:hover {
+    color: rgba(0, 0, 0, 0.55);
+    letter-spacing: 0.02em;
+}
+
+.mobile-about-rest {
+    max-height: 2000px;
+    opacity: 1;
+    overflow: hidden;
+    transition: max-height var(--dur-slow) var(--ease-snap), opacity var(--dur-base) ease;
+}
+
+.mobile-about-rest.hidden {
+    display: block; /* overrides the global .hidden{display:none} so it can animate closed */
+    max-height: 0;
+    opacity: 0;
+}
+
+.project-preview a {
+    display: block;
+    overflow: hidden;
+}
+
+.project-preview video {
+    transition: transform var(--dur-slow) var(--ease-out);
+}
+
+.project-preview a:hover video {
+    transform: scale(1.03);
+}
+
+/* Initial hidden state */
+.fade-in-element {
+    opacity: 0;
+    transition: opacity var(--dur-slow) var(--ease-out);
+}
+
+/* State when visible */
+.fade-in-element.is-visible {
+    opacity: 1;
 }
 
 
-.awarded, .awarded h2{
-    background-color: rgb(146, 146, 146);
-    color: var(--main-color);
-
-}
+/* ============ 8. Project Detail Page ============ */
 
 h2 {
     position: sticky;
     top: 0px;
-    background-color: rgb(198, 198, 198);
-
+    z-index: 2; /* stays above the project-preview video even when its hover-zoom
+                   transform gives it a stacking context of its own */
+    background-color: var(--grey-surface);
 }
 
-img {
-    width: 100%;
-    display: block;
+.awarded,
+.awarded h2 {
+    background-color: var(--grey-muted);
+    color: var(--main-color);
 }
 
-#sidepanel {
-    order: 2;
+/* awards list — a solid block sets it apart from surrounding body copy,
+   square markers instead of bullets keep it in the same drawn-shape
+   vocabulary as the sidepanel arrows below */
+.awards {
+    padding: 20px var(--gutter-md);
+    background-color: black;
+}
+
+.awards ul {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    background-color: rgb(224, 224, 224);
-    overflow: hidden;
-
-    position: relative;
+    gap: 10px;
 }
+
+.awards li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    padding-right: 0;
+    color: var(--main-color);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    font-size: 13px;
+}
+
+.awards li::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    flex-shrink: 0;
+    background-color: var(--main-color);
+}
+
+/* credits list — dt (role) and dd (contributor) markup stays as-is;
+   assigning dt to column 1 and dd to column 2 makes the grid's own
+   auto-placement stack each role's contributors under one label,
+   without needing to change the HTML structure */
+dl {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    column-gap: 20px;
+    row-gap: 6px;
+    padding: var(--gutter-lg) 0;
+}
+
+dt {
+    grid-column: 1;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+dd {
+    grid-column: 2;
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* mobile fallback for the desktop sidepanel — rendered inline in the
+   project article on narrow viewports (see MobileSidepanelHtml in main.js) */
+
+.sidepanel-about-mobile {
+    padding: var(--gutter-md) var(--gutter-lg);
+    background-color: var(--grey-panel);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* p5 sketches don't run in the mobile layout — this note replaces the
+   missing interactive piece. Flat lime block instead of grey is enough
+   to mark it as a different kind of message, no extra ornamentation */
+.sketch-mobile-note {
+    padding: var(--gutter-md) var(--gutter-lg);
+    background-color: var(--main-color);
+    color: black;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+}
+
+
+/* ============ 9. Sidepanel (desktop) ============ */
 
 .sidepanel-viewport {
     flex: 1;
@@ -235,38 +557,18 @@ img {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+
+    opacity: 1;
+    transition: opacity var(--dur-base) ease;
 }
 
-/* #sidepanel .sidepanel-hover-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    outline: none;
-    border: none;
-} */
-
-.bt-lang {
-    /* border: 1px red solid; */
+/* overrides the generic .hidden{display:none} for this element and the
+   hover-image below — they occupy the same box, so hiding one and showing
+   the other needs to be a crossfade, not a cut */
+.sidepanel-viewport.hidden {
     display: flex;
-    gap: 5pt;
-    font-size: 12pt;
-    color: black;
-}
-
-button{
-    border: none;
-    font-size: inherit;
-    color: rgba(0, 0, 0, 0.5);
-    background-color: transparent;
-}
-
-button:hover{
-    color: black;
-}
-
-button.active{
-    color: black;
+    opacity: 0;
+    pointer-events: none;
 }
 
 #sidepanel .sidepanel-hover-image {
@@ -279,6 +581,17 @@ button.active{
     outline: none;
     border: none;
     z-index: 5;
+
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity var(--dur-base) ease, transform var(--dur-slow) var(--ease-out);
+}
+
+#sidepanel .sidepanel-hover-image.hidden {
+    display: block;
+    opacity: 0;
+    transform: scale(1.03);
+    pointer-events: none;
 }
 
 #sidepanel p {
@@ -297,64 +610,94 @@ button.active{
     flex-shrink: 0;
     display: flex;
     flex-direction: row;
-    height: 35px;
+    height: var(--nav-height);
     width: 100%;
 
     align-items: center;
     justify-content: space-between;
     background-color: transparent;
-    /* border: red 1px solid;        */
+    padding: 0 var(--gutter-sm);
 }
 
 .sidepanel-viewport-nav {
     /* delete this to make it "take space" */
     position: absolute;
-    bottom: 0px;
+    bottom: 16px;
 
     flex-shrink: 0;
     display: flex;
     flex-direction: row-reverse;
-    height: 35px;
+    height: var(--nav-height);
     width: 100%;
 
     align-items: center;
     justify-content: space-between;
-    /* background-color: white; */
-    /* border: red 1px solid;        */
+    padding: 0 var(--gutter-sm);
+}
+
+/* the prev/next pair — the only child of .sidepanel-viewport-nav, needs its
+   own flex context so the two buttons sit together with a gap instead of
+   touching edge to edge */
+.sidepanel-viewport-nav > div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
 .sp-prev, .sp-next {
-    background: none;
-    border: none;
-    font-size: 30pt;
-    line-height: 0.7;
-    cursor: pointer;
-    color: black;
+    position: relative;
+    width: 40px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* the literal &lt / &gt characters are visually replaced by the drawn
+       triangle below — collapsing them keeps the accessible label
+       (aria-label) intact for screen readers without the glyph rendering
+       inconsistently across fonts/browsers at 30pt */
+    font-size: 0;
     background-color: var(--main-color);
-    /* border: red 1px dashed; */
+    cursor: pointer;
+    transition: background-color var(--dur-fast) ease, transform var(--dur-fast) ease;
+}
 
+.sp-prev::before,
+.sp-next::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+}
+
+.sp-prev::before {
+    border-right: 10px solid black;
+    margin-left: -2px;
+}
+
+.sp-next::before {
+    border-left: 10px solid black;
+    margin-right: -2px;
 }
 
 .sp-prev:hover, .sp-next:hover {
-    color: var(--main-color);
     background-color: black;
 }
 
-.filters{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 20pt;
-    padding-right: 16px;
+.sp-prev:hover::before {
+    border-right-color: var(--main-color);
 }
 
-.filter-button.active {
-    background-color: black;
-    color: var(--main-color);
+.sp-next:hover::before {
+    border-left-color: var(--main-color);
 }
 
+.sp-prev:active, .sp-next:active {
+    transform: scale(0.88);
+}
 
-/* .sp-dots {
+/* shelved idea — carousel-style position dots, kept for later
+.sp-dots {
     display: flex;
     gap: 6px;
 }
@@ -367,7 +710,41 @@ button.active{
 
 .sp-dot.active {
     background: black;
-} */
+}
+*/
+
+.bt-lang {
+    display: flex;
+    gap: 5pt;
+    font-size: 12pt;
+    color: black;
+}
+
+.bt-lang button.active {
+    color: black;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.bt-curriculum button {
+    padding: 3px 10px;
+    border: 1.5px solid black;
+    background-color: transparent;
+    color: black;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+
+.bt-curriculum button:hover {
+    background-color: black;
+    color: var(--main-color);
+}
+
+
+/* ============ 10. Sketch Embeds ============ */
 
 .sketch-container {
     width: 100%;
@@ -378,67 +755,52 @@ button.active{
     display: block;
 }
 
+
+/* ============ 11. Utility Classes ============ */
+
 .hidden {
     display: none;
 }
 
-video {
-    
-    width: 100%;
-    object-fit: cover;
-    display: block;
-    transition: max-height 1.6s ease;
+.mobileOnly {
+    display: none;
 }
 
 
+/* ============ 12. Dev/Debug ============ */
+/* leftover test elements from an earlier drag-and-drop experiment — not
+   referenced by any live markup right now (both are commented out in
+   index.html). Left in place since removing them wasn't asked for, but
+   flagging here in case they're safe to delete. */
 
-dt{
-    font-size: 10pt;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-/* Initial hidden state */
-.fade-in-element {
-  opacity: 0;
-  transition: opacity 0.6s ease-out;
-}
-
-/* State when visible */
-.fade-in-element.is-visible {
-  opacity: 1;
-}
-
-
-
-#testdiv{
+#testdiv {
     position: absolute;
     display: flex;
     flex-direction: column;
     z-index: 101;
     width: 600px;
     height: 400px;
-    background-color: tomato;    
+    background-color: tomato;
 }
 
-#testDragImg{
+#testDragImg {
     position: absolute;
     display: flex;
     flex-direction: column;
     z-index: 101;
     width: 600px;
     height: 400px;
-    background-color: tomato;    
+    background-color: tomato;
 }
 
-.dragArea{
+.dragArea {
     width: 100%;
     height: 40px;
-    background-color: rgb(74, 71, 255);    
+    background-color: rgb(74, 71, 255);
 }
 
-.mobileOnly {display: none;}
 
+/* ============ 13. Responsive ============ */
 
 @media (max-width: 980px) {
     main {
@@ -456,9 +818,12 @@ dt{
         flex-direction: row;
     }
     #sidepanel { display: none; }
-    #flip-layout{display: none;}
-    .mobileOnly {display: block;}
+    #flip-layout { display: none; }
+    .mobileOnly { display: block; }
 }
+
+
+/* ============ 14. Scrollbar ============ */
 
 /* Firefox (and anything without ::-webkit-scrollbar support) */
 @supports not selector(::-webkit-scrollbar) {
@@ -480,7 +845,6 @@ dt{
 #sidepanel p::-webkit-scrollbar-track,
 #sidepanel p::-webkit-scrollbar-track-piece {
     background: white;
-    /* background: transparent; */
 }
 
 #maincontent::-webkit-scrollbar-button,
@@ -498,22 +862,10 @@ dt{
 #maincontent::-webkit-scrollbar-thumb,
 #sidepanel p::-webkit-scrollbar-thumb {
     background-color: black;
-    /* border: 1px solid transparent; */
     background-clip: padding-box;
 }
 
 #maincontent::-webkit-scrollbar-thumb:hover,
 #sidepanel p::-webkit-scrollbar-thumb:hover {
     background-color: var(--main-color);
-}
-
-::selection {
-    background-color: var(--main-color);
-    color: black;
-}
-
-/* Firefox needs this vendor-prefixed version too, for older versions */
-::-moz-selection {
-    background-color: var(--main-color);
-    color: black;
 }
