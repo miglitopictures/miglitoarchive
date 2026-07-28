@@ -3,7 +3,7 @@
     */
 
 * {
-    --main-color: rgb(30, 255, 0);
+    --main-color: rgb(195, 255, 0);
     --content-width: max(600px, 35vw);
     --nav-height: 60px;
     --padding-horizontal: 15px;
@@ -273,7 +273,7 @@ time{
     align-content: center;
 }
 
-ul {
+.categories-list {
     padding: 0px var(--padding-horizontal);
 }
 
@@ -283,10 +283,29 @@ ul {
     color: var(--main-color);
 }
 
-dt {
+dl {
+    padding: var(--padding-horizontal);
+    column-count: 2;
     font-size: 10pt;
+}
+
+dl div {
+    /* border: red solid 1px; */
+    break-inside: avoid;
+    margin-bottom: var(--padding-horizontal);
+}
+
+dl div:last-child {
+    margin-bottom: 0px;
+}
+
+dt {
+    /* font-size: 10pt; */
     font-weight: 600;
     text-transform: uppercase;
+}
+dd {
+    font-size: 14pt;
 }
 
 
@@ -325,6 +344,7 @@ dt {
 .mobile-note {
     padding: var(--padding-horizontal);
     font-size: 20pt;
+    background-color: white;
 
 }
 
@@ -403,7 +423,6 @@ body.flipped .sidepanel-viewport-nav {
     display: flex;
     flex-direction: row;
     height: var(--nav-height);
-    padding: 0px var(--padding-horizontal);
     width: 100%;
 
     align-items: center;
@@ -411,6 +430,20 @@ body.flipped .sidepanel-viewport-nav {
     background-color: transparent;
     /* border: red 1px solid; */
 }
+
+.sidepanel-nav button{
+    cursor: pointer;
+
+}
+
+.sidepanel-nav .bt-curriculum button{
+    text-decoration: underline;
+    height: var(--nav-height);
+    padding: 0px var(--padding-horizontal);
+    /* border: red 1px solid; */
+
+}
+
 
 .sidepanel-viewport-nav {
     /* delete this to make it "take space" */
@@ -511,12 +544,24 @@ body.flipped .sidepanel-viewport-nav {
 }
 
 .bt-lang {
-    /* border: 1px red solid; */
     display: flex;
-    gap: 5pt;
+    gap: 0px;
     font-size: 12pt;
     color: black;
+    align-items: center;
 }
+
+.bt-lang button {
+    /* border: 1px red solid; */
+    height: var(--nav-height);
+    padding: 0px var(--padding-horizontal);
+}
+
+.bt-lang button.active {
+    text-decoration: underline;
+    cursor: default;
+}
+
 
 
 /* 

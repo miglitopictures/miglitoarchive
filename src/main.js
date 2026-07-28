@@ -88,7 +88,7 @@ function ProjectlHtml(project){
     let creditsHtml = '';
 
     if (project.credits) {
-        creditsHtml += '<dl><section aria-label="Credits">';
+        creditsHtml += '<dl>';
 
 
         for (const role in project.credits) {
@@ -100,14 +100,16 @@ function ProjectlHtml(project){
             });
 
             creditsHtml += `
-                <dt>${dict.roles[role] ? dict.roles[role][lang] : role}</dt>
-                ${contributorsHtml}
                 
+                <div>
+                    <dt>${dict.roles[role] ? dict.roles[role][lang] : role}</dt>
+                    ${contributorsHtml}
+                </div>
                 `;
 
         }
 
-        creditsHtml += `</dl></section>`;
+        creditsHtml += `</dl>`;
     }
 
      // make content 
@@ -156,7 +158,7 @@ function ProjectlHtml(project){
                 <h2>${project.title}${project.awards ? '*' : ''}</h2>
                 <time datetime="${project.year}">${project.year}</time>
             </hgroup>
-            <ul>
+            <ul class="categories-list" aria-label="Categories">
                 ${categoriesHtml}
             </ul>
             <video
@@ -264,7 +266,7 @@ function ProjectListHtml(projects){
                         <h2>${work.title}${work.awards ? '*' : ''}</h2>
                         <time datetime="${work.year}">${work.year}</time>
                     </hgroup>
-                    <ul aria-label="Categories">
+                    <ul class="categories-list" aria-label="Categories">
                         ${categoriesHtml}
                     </ul>
                     <a href="/${key}" aria-label="View project: ${work.title}">
