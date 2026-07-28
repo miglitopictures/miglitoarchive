@@ -3,7 +3,7 @@
 export default (p) => {
 
     let pg;
-    let margin = 40;
+    let margin = 0;
 
     p.setup = () => {
         const container = document.querySelector('.sketch-container');

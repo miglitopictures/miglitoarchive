@@ -286,7 +286,7 @@ time{
 dl {
     padding: var(--padding-horizontal);
     column-count: 2;
-    font-size: 10pt;
+    font-size: clamp(0.9rem, 3cqi, 1.4rem);;
 }
 
 dl div {
@@ -304,9 +304,9 @@ dt {
     font-weight: 600;
     text-transform: uppercase;
 }
-dd {
+/* dd {
     font-size: 14pt;
-}
+} */
 
 
 /* -- Mobile "about" block -- */
@@ -379,9 +379,9 @@ body.flipped .sidepanel-nav {
     flex-direction: row-reverse;
 }
 
-body.flipped .sidepanel-viewport-nav {
+/* body.flipped .sidepanel-viewport-nav {
     flex-direction: row;
-}
+} */
 
 #sidepanel p {
     max-height: 100vh;
@@ -448,11 +448,10 @@ body.flipped .sidepanel-viewport-nav {
 .sidepanel-viewport-nav {
     /* delete this to make it "take space" */
     position: absolute;
-    bottom: 0px;
+    bottom: 50vh;
 
     flex-shrink: 0;
     display: flex;
-    flex-direction: row-reverse;
     height: var(--nav-height);
     gap: 0px;
     width: 100%;
@@ -471,15 +470,13 @@ body.flipped .sidepanel-viewport-nav {
 
 .sp-prev,
 .sp-next {
-    background: none;
     border: none;
-    height: var(--nav-height);
+    height: calc(var(--nav-height)*3);
     width: var(--nav-height);
-    font-size: 30pt;
+    font-size: 1.2rem;
     line-height: 0.7;
     cursor: pointer;
     color: black;
-    background-color: grey;
     /* border: red 1px dashed; */
 }
 
@@ -487,6 +484,14 @@ body.flipped .sidepanel-viewport-nav {
 .sp-next:hover {
     color: var(--main-color);
     background-color: black;
+}
+
+
+.sp-prev.hidden,
+.sp-next.hidden {
+    display: block;
+    visibility: hidden;
+    /* opacity: 0%; */
 }
 
 /* .sp-dots {
@@ -582,14 +587,14 @@ body.flipped .sidepanel-viewport-nav {
    Fade-in Utility
     */
 
-.fade-in-element {
+/* .fade-in-element {
   opacity: 0;
   transition: opacity 0.6s ease-out;
 }
 
 .fade-in-element.is-visible {
   opacity: 1;
-}
+} */
 
 
 /* 

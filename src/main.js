@@ -1,23 +1,30 @@
-// import data
+// Import Data
 import { works } from "../data/projects.js";
 import { dict } from "../data/dictionary.js";
-// import functionality
-import { makeDraggable } from "./draggable.js";
+// Import Functionality
+import { makeDraggable } from "./draggable.js"; // i probably wont need that
 
+//* Filter Buffer :O
 let currentFilter = '';
 
-
-// sidepannel sketched and entries
+//* Sidepanel Sketch and Entries
 let currentSketch = null;
 let currentEntries = [];
 let currentIndex = 0;
 
-// setup language NOTE
-let lang = localStorage.getItem('lang') || "en";
+//* Setup Language Functionality
+let lang = localStorage.getItem('lang') || "en"; // set to last selected
 
-// setup flipping
+function setLang(selectedLang){
+    if (lang != selectedLang) {
+        lang = selectedLang;
+        localStorage.setItem('lang', selectedLang);
+        make(location.pathname);
+    }
+}
+
+//* Setup Flipping
 const flipButton = document.getElementById('flip-layout');
-
 // restore preference on load
 // if (localStorage.getItem('layoutFlipped') === 'true') {
 //     document.body.classList.add('flipped');
@@ -27,7 +34,7 @@ flipButton.addEventListener('click', () => {
     // localStorage.setItem('layoutFlipped', document.body.classList.contains('flipped'));
 });
 
-//setup title randomization
+//* Setup Title Randomization and Hover Effect
 const titleElement = document.getElementById("site-title");
 const titleIndex = Math.floor(Math.random() * dict.titles.length);
 const titleText = dict.titles[titleIndex][lang] ? dict.titles[titleIndex][lang] : dict.titles[titleIndex]["en"];
@@ -40,8 +47,7 @@ titleElement.addEventListener('mouseleave', () => {
     titleElement.textContent = titleText;
 });
 
-// setup hamburguer menu
-
+//* Setup Hamburguer Menu
 const hambMenuButton = document.getElementById('hamb-menu-bt')
 
 hambMenuButton.addEventListener('click',() => {
@@ -52,133 +58,19 @@ hambMenuButton.addEventListener('click',() => {
     }
 })
 
-// setup observer for fade in
-const observerOptions = {
-  root: null, // use the viewport
-  threshold: 0.2 // 20% of the element is visible
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-visible');
-      observer.unobserve(entry.target);
-    } else {
-        entry.target.classList.remove('is-visible');
-    }
-  });
-}, observerOptions);
-
-
-// HTML generators
-
-
-function ProjectlHtml(project){
-    
-    //  make categories
-
-    let categoriesHtml = '';
-
-    project.categories.forEach((categorie) => {
-        categoriesHtml += `<li><button class="filter-button">${dict.categories[categorie][lang]}</button></li>`
-    });
-
-    // make credits 
-
-    let creditsHtml = '';
-
-    if (project.credits) {
-        creditsHtml += '<dl>';
-
-
-        for (const role in project.credits) {
-            let contributorsHtml = '';
-
-            project.credits[role].forEach((contributor) => {
-                contributorsHtml += `
-                <dd>${contributor}</dd>`;
-            });
-
-            creditsHtml += `
-                
-                <div>
-                    <dt>${dict.roles[role] ? dict.roles[role][lang] : role}</dt>
-                    ${contributorsHtml}
-                </div>
-                `;
-
-        }
-
-        creditsHtml += `</dl>`;
-    }
-
-     // make content 
-
-    let contentHtml = '';
-
-    if (project.content){
-
-        for (const content of project.content){
-            switch (content.type){
-                case "image":
-                    contentHtml += `<img src="${content.url}"/>`;
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
-     // make awards
-
-    let awardsHtml = '';
-
-    if (project.awards){
-        awardsHtml += '<section class="awards" aria-label="Awards"><ul>'
-        for (const award of project.awards){
-            awardsHtml += `
-                <li>${award.name}</li>
-            `
-        }
-        awardsHtml += '</ul></section>'
-    }
-
-    let aboutHtml = ''; // mobile only
-
-    if (project.sidepanel) {
-        aboutHtml = MobileSidepanelHtml(project.sidepanel);
-    }
 
 
 
-    const projectHtml = `
-        ${HamburguerMenuHtml()}
-        <article id="project-content">
-            <hgroup>
-                <h2>${project.title}${project.awards ? '*' : ''}</h2>
-                <time datetime="${project.year}">${project.year}</time>
-            </hgroup>
-            <ul class="categories-list" aria-label="Categories">
-                ${categoriesHtml}
-            </ul>
-            <video
-                ${project.preview_video ? `src="${project.preview_video}"` : ''}
-                poster="${project.preview_thumb}"
-                muted
-                loop
-                playsinline
-                preload="metadata">
-            </video>
-            ${contentHtml}
-            ${aboutHtml}
-            ${awardsHtml}
-            ${creditsHtml}
-        </article>
-    `;
+window.setLang = setLang;
 
-    return projectHtml;
-}
 
+//* HTML generators //
+// Here i use Pascal casing for HTML generators, with the 'l' prefix for local generators.
+// e.g.
+// global generators: HomepageHtml(), ReusableNavHtml().
+// local generators: lCreditsHtml(), l
+
+/** Returns the hamburguer menu HTML, used in every path.*/
 function HamburguerMenuHtml() {
     return `
         <ul id="hamb-menu" class="mobileOnly">
@@ -192,84 +84,195 @@ function HamburguerMenuHtml() {
     `
 }
 
-function ProjectListHtml(projects){
-    let projectListHtml = '';
+/** Returns the categorie list HTML, used in ProjectHeaderHtml. 
+ * @param {*} project - a single project from the works object (projects.js)
+*/
+function CategoriesHtml(project){
+    let categoriesHtml = '<ul class="categories-list" aria-label="Categories">';
 
-    projectListHtml += HamburguerMenuHtml();
+    project.categories.forEach((categorie) => {
+        categoriesHtml += `<li><button data-cat="${categorie}" class="filter-button ${categorie == currentFilter ? 'active': ''}">${dict.categories[categorie][lang]}</button></li>`
+    });
 
-    const fullParagraph = dict.content.homepage[lang];
-    let firstParagraph, restParagraph;
+    categoriesHtml += '</ul>';
 
-    { //splitFirstParagraph
-        const separator = '<br><br>';
-        const idx = fullParagraph.indexOf(separator);
-        if (idx === -1) {
-            firstParagraph = fullParagraph;
-            restParagraph = '';
-        } else {
-            firstParagraph = fullParagraph.slice(0, idx);
-            restParagraph = fullParagraph.slice(idx + separator.length/2);
+    return categoriesHtml;
+}
+
+/** Returns the header HTML for the project, used in home (Project List) and project page. 
+ * @param {*} project - a single project from the works object (projects.js)
+*/
+function ProjectHeaderHtml(project){
+
+    let headerHtml = `
+            <hgroup>
+                <h2>${project.title}${project.awards ? '*' : ''}</h2>
+                <time datetime="${project.year}">${project.year}</time>
+            </hgroup>
+            ${CategoriesHtml(project)}`;
+
+    return headerHtml;
+}
+
+/** Returns the detailed project HTML for the project page. 
+ * @param {*} project - a single project from the works object (projects.js)
+*/
+function ProjectlHtml(project){
+
+    function lContentHtml(project){
+        if (!project.content) return '';
+
+        let contentHtml = '';
+
+        for (const content of project.content){
+            switch (content.type){
+                case "image":
+                    contentHtml += `<img src="${content.url}"/>`;
+                    break;
+            }
         }
-        
+
+        return contentHtml;
     }
-    projectListHtml += `
-        <section class="mobileOnly mobile-about">
-            <p class="mobile-about-first">${firstParagraph}</p>
-            ${restParagraph ? `<p class="mobile-about-rest hidden">${restParagraph}</p>` : ''}
-            ${restParagraph ? `<button class="mobile-about-toggle" aria-expanded="false">+ ${dict.content["read-more"][lang]}</button>` : ''}
-        </section>
+
+    function lCreditsHtml(project){
+        if (!project.credits) return '';
+        let creditsHtml = '<dl>';
+        for (const role in project.credits) {
+            let contributorsHtml = '';
+            project.credits[role].forEach((contributor) => {
+                contributorsHtml += `<dd>${contributor}</dd>`;
+            });
+            creditsHtml += `
+                <div>
+                    <dt>${dict.roles[role] ? dict.roles[role][lang] : role}</dt>
+                    ${contributorsHtml}
+                </div>`;
+
+        }
+        creditsHtml += `</dl>`;
+        return creditsHtml;
+    }
+
+    function lAwardsHtml(project){
+        if (!project.awards) return '';
+        let awardsHtml = '<ul class="awards" aria-label="Awards">';
+        for (const award of project.awards){
+            awardsHtml += `
+                <li>${award.name}</li>
+            `
+        }
+        awardsHtml += '</ul>'
+        return awardsHtml;
+    }
+
+    function lMobileSidepanelFallbackHtml(project){
+        if (!project.sidepanel) return '';
+        let sidepanelFallbackHtml = '';
+
+        project.sidepanel.forEach((entry) => {
+            switch (entry.type) {
+                case 'about':
+                    sidepanelFallbackHtml += `<p class="mobileOnly mobile-note">${entry.text[lang]}</p>`
+                    break;
+                case 'p5':
+                    const message = entry.mobileMessage ? entry.mobileMessage[lang] :  dict.content["sketch-mobile-fallback"][lang];
+                    sidepanelFallbackHtml += `<p class="mobileOnly sketch-mobile-note">${message}</p>`
+                    break;
+            }
+        })
+        return sidepanelFallbackHtml;
+    }
+
+
+    const projectHtml = `
+        ${HamburguerMenuHtml()}
+        <article id="project-content">
+            ${ProjectHeaderHtml(project)}
+            <video
+                ${project.preview_video ? `src="${project.preview_video}"` : ''}
+                poster="${project.preview_thumb}"
+                muted
+                loop
+                playsinline
+                preload="metadata">
+            </video>
+            ${lContentHtml(project)}
+            ${lMobileSidepanelFallbackHtml(project)}
+            ${lAwardsHtml(project)}
+            ${lCreditsHtml(project)}
+        </article>
     `;
 
-    if (currentFilter && currentFilter != '') {
+    return projectHtml;
+}
 
-        projectListHtml += `
+/** Returns the detailed project list HTML for the homepage. 
+ * @param {*} project - a single project from the works object (projects.js)
+*/
+function ProjectListHtml(projects){
+
+    function lMobileAboutFallbackHtml(){
+        
+        const fullParagraph = dict.content.homepage[lang];
+        let firstParagraph, restParagraph;
+
+        { //splitFirstParagraph
+            const separator = '<br><br>';
+            const idx = fullParagraph.indexOf(separator);
+            if (idx === -1) {
+                firstParagraph = fullParagraph;
+                restParagraph = '';
+            } else {
+                firstParagraph = fullParagraph.slice(0, idx);
+                restParagraph = fullParagraph.slice(idx + separator.length/2);
+            }
+            
+        }
+
+        let aboutHtml = `
+            <section class="mobileOnly mobile-about">
+                <p class="mobile-about-first">${firstParagraph}</p>
+                ${restParagraph ? `<p class="mobile-about-rest hidden">${restParagraph}</p>` : ''}
+                ${restParagraph ? `<button class="mobile-about-toggle" aria-expanded="false">+ ${dict.content["read-more"][lang]}</button>` : ''}
+            </section>
+        `;
+
+        return aboutHtml;
+
+    }
+
+    function lAppliedFilterHtml(){
+        if (!currentFilter || currentFilter == '') return '';
+        let filtersHtml = `
             <section class="filters">
                 <p>${dict.content.filter[lang]}: ${dict.categories[currentFilter][lang].toUpperCase()}</p>
                 <button>x</button>
             </section>
         `;
+        return filtersHtml;
     }
-    
-    // i want to make this homepage text only show the first x lines and add a + expand button that opens the div
-    // projectListHtml += `<p class="mobileOnly expandable">${dict.content.homepage[lang]}</p>`?
-    // projectListHtml += `
-    //      <section id='mobileAbout' class='mobileOnly'>
-    //          <p class="mobileOnly expandable">${dict.content.homepage[lang]}</p>
-    //          <button><button/>
-    //      </section>
-    // `?
 
-    // i dont know the best way exactly
+    let projectListHtml = `
+        ${HamburguerMenuHtml()}
+        ${lMobileAboutFallbackHtml()}
+        ${lAppliedFilterHtml()}
+    `;
 
-    for (const key in projects){
+    for (const id in projects){
 
-            const work = projects[key];
+            const work = projects[id];
 
             // se a categoria nao bater, nao renderizar projeto
             if (currentFilter && !work.categories.includes(currentFilter)) {
                 continue;
             }
-
-            // make categories
-
-            let categoriesHtml = '';
-
-            work.categories.forEach((categorie) => {
-                categoriesHtml += `<li><button data-cat="${categorie}" class="filter-button ${categorie == currentFilter ? 'active': ''}">${dict.categories[categorie][lang]}</button></li>`
-            })
-
             //  make work preview div
 
             projectListHtml += `
                 <article class="project-preview fade-in-element ${work.awards ? 'awarded' : ''}">
-                    <hgroup>
-                        <h2>${work.title}${work.awards ? '*' : ''}</h2>
-                        <time datetime="${work.year}">${work.year}</time>
-                    </hgroup>
-                    <ul class="categories-list" aria-label="Categories">
-                        ${categoriesHtml}
-                    </ul>
-                    <a href="/${key}" aria-label="View project: ${work.title}">
+                    ${ProjectHeaderHtml(work)}
+                    <a href="/${id}" aria-label="View project: ${work.title}">
                         <video
                             ${work.preview_video ? `src="${work.preview_video}"` : ''}
                             aria-label="${work.preview_alt}"
@@ -286,32 +289,6 @@ function ProjectListHtml(projects){
     return projectListHtml;
 }
 
-function MobileSidepanelHtml(entries){
-    let html = '';
-
-    entries.forEach((entry) => {
-        switch (entry.type) {
-            case 'about':
-                html += `<p class="mobileOnly mobile-note">${entry.text[lang]}</p>`
-                break;
-            case 'p5':
-                const message = entry.mobileMessage ? entry.mobileMessage[lang] :  dict.content["sketch-mobile-fallback"][lang];
-                html += `<p class="mobileOnly sketch-mobile-note">${message}</p>`
-                break;
-        }
-    })
-
-    return html;
-}
-
-function setLang(selectedLang){
-    if (lang != selectedLang) {
-        lang = selectedLang;
-        localStorage.setItem('lang', selectedLang);
-        make(location.pathname);
-    }
-}
-window.setLang = setLang;
 
 function makeSidepanelNav(entries, index){
     // pega o nav do painel
@@ -320,15 +297,14 @@ function makeSidepanelNav(entries, index){
     // se nao tem multiplos entries (paginas em sidepanel), nao temos nav. return!
 
     let nextPreviousHtml = '';
-    const hasNextPrevArrow = entries.length > 1;
-    if (hasNextPrevArrow) {
-        nextPreviousHtml = `
-            <div>
-                <button class="sp-prev" aria-label="Previous">&lt</button>
-                <button class="sp-next" aria-label="Next">&gt</button>
-            </div>
-        `
-    }
+    // const hasNextPrevArrow = entries.length > 1;
+    const hasNext = ((currentIndex + 1) != entries.length);
+    const hasPrev = (currentIndex != 0);
+    
+    nextPreviousHtml = `
+        <button class="sp-prev ${!hasPrev? 'hidden' : ''}" aria-label="Previous">&lt</button>
+        <button class="sp-next ${!hasNext? 'hidden' : ''}" aria-label="Next">&gt</button>
+    `
 
     let downloadCVHtml = `
         <div class='bt-curriculum'>
@@ -360,15 +336,19 @@ function makeSidepanelNav(entries, index){
         bt.classList.toggle('active', bt.dataset.lang == lang);
     })
 
-    if (hasNextPrevArrow) {
+    if (hasPrev) {
         spViewportNav.querySelector('.sp-prev').onclick = (e) => {
-            currentIndex = (index - 1 + entries.length) % entries.length;
+            // currentIndex = (index - 1 + entries.length) % entries.length;
+            currentIndex = Math.max(0,index - 1 );
             makeSidepanelPage(entries, currentIndex);
             // e.stopPropagation();
         }
+    }
     
+    if (hasNext) {
         spViewportNav.querySelector('.sp-next').onclick = (e) => {
-            currentIndex = (index + 1) % entries.length;
+            // currentIndex = (index + 1) % entries.length;
+            currentIndex = Math.min(entries.length, index + 1);
             makeSidepanelPage(entries, currentIndex);
             // e.stopPropagation();
         }
@@ -383,11 +363,11 @@ function makeSidepanelPage(entries, index){
     }
 
 
-    // get the sidepannel viewport element and clean it
+    // get the sidepanel viewport element and clean it
     const spViewport = document.querySelector('.sidepanel-viewport');
     spViewport.innerHTML = '';
 
-    // current sidepannel entry --------
+    // current sidepanel entry --------
     const entry = entries[index];
 
     switch (entry.type) {
@@ -425,7 +405,7 @@ function make(path){
     if (path === '/' || path === '/index.html'){
         // home (worklist) ------------------------------------------------------------------------------------------------
 
-        // homepage sidepannel
+        // homepage sidepanel
         currentEntries = [{ type: 'about', text: dict.content.homepage }];
         currentIndex = 0;
         makeSidepanelPage(currentEntries, 0);
@@ -437,7 +417,7 @@ function make(path){
 
         
         
-        const categorieButtons = maincontent.querySelectorAll('li button')
+        const categorieButtons = maincontent.querySelectorAll('.filter-button')
         categorieButtons.forEach((catBt) => {
             catBt.addEventListener('click', () => {
                 if (currentFilter != catBt.dataset.cat){
@@ -480,7 +460,7 @@ function make(path){
         // ---------------- observe and play on over ----------------
         workPreviewDivs.forEach(el => {
 
-            observer.observe(el);
+            // observer.observe(el);
             let video = el.querySelector("video");
 
             // Play video
@@ -512,12 +492,13 @@ function make(path){
 
     } else {
 
-
+        // clean selected filter
+        currentFilter = '';
 
         // project page ----------------------------------------------------------------------------------------------------
 
-        const key = path.slice(1); // extract key from path '/my-project' -> 'my-project'
-        const work = works[key];   // get work from works object using key
+        const id = path.slice(1); // extract id from path '/my-project' -> 'my-project'
+        const work = works[id];   // get work from works object using id
         
         // UPDATE DOM
         maincontent.innerHTML = ProjectlHtml(work);
