@@ -194,11 +194,11 @@ li button {
     max-height: 0;
     opacity: 0;
     transform: translateY(-6px);
-    transition: max-height 0.3s ease, opacity 0.2s ease, transform 0.25s ease;
+    /* transition: max-height 0.3s ease, opacity 0.2s ease, transform 0.25s ease; */
 }
 
 #hamb-menu.hamb-open {
-    max-height: 200px; /* generous cap — comfortably above actual content height */
+    max-height: 600px;
     opacity: 1;
     transform: translateY(0);
     /* border-bottom: 1px solid black; */
@@ -208,7 +208,7 @@ li button {
     display: flex;
     align-items: center;
     height: var(--nav-height); /* bigger tap target than the 35px nav rhythm — this is touch UI */
-    padding: 0px var(--padding-horizontal);
+    /* padding: 0px var(--padding-horizontal); */
     /* padding: 0 16px; */
     border-top: 1px solid rgba(0, 0, 0, 0.15); /* thin dividers instead of your old boxed border:red debug style */
 }
@@ -217,26 +217,41 @@ li button {
     border-top: none;
 }
 
-#hamb-menu button {
+#hamb-menu button, #hamb-menu a {
+    cursor: pointer;
     background-color: transparent;
+    text-decoration: none;
     color: black;
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    padding: 0;
-    transition: color 0.15s ease;
+    text-align: left;
+    align-content: center;
+    padding: 0px var(--padding-horizontal);
+    /* transition: color 0.15s ease; */
+    width: 100%;
+    height: 100%;
 }
 
-#hamb-menu button:hover {
+#hamb-menu button:hover , #hamb-menu a:hover {
     color: var(--main-color);
+    background-color: black;
 }
 
 #hamb-menu .bt-lang {
+    padding: 0px;
     color: black; /* overrides the global .bt-lang color:black inherited already, kept explicit for clarity */
 }
 
+#hamb-menu .bt-lang button{
+    width: 50%;
+    text-align: center;
+    /* border: solid red 1px; */
+}
 #hamb-menu .bt-lang button.active {
+    cursor: default;
+    background-color: grey;
     color: black;
     font-weight: 700;
     text-decoration: underline;
@@ -259,15 +274,20 @@ li button {
     background-color: rgb(198, 198, 198);
 }
 
-hgroup {
+hgroup{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0px var(--padding-horizontal);
+}
+
+.project-heading {
     position: sticky;
     top: 0px;
-    padding: 0px var(--padding-horizontal);
     background-color: rgb(198, 198, 198);
+    z-index: 80;
 }
+
 time{
     text-align: center;
     align-content: center;

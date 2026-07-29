@@ -75,10 +75,13 @@ function HamburguerMenuHtml() {
     return `
         <ul id="hamb-menu" class="mobileOnly">
             <li class='bt-curriculum'>
-                <button>${dict.content["cv-download"][lang]}</button>
+                <a href="./assets/miguelduarte-resume.pdf">${dict.content["cv-download"][lang]}</a>
+            </li>
+            <li>
+                <a href="./assets/miguelduarte-resume.pdf">${dict.content["cv-download"][lang]}</a>
             </li>
             <li class="bt-lang">
-                <button data-lang="pt" class="${lang == 'pt' ? 'active' : ''}" onclick="setLang('pt')">PT</button>/<button data-lang="en" class="${lang == 'en' ? 'active' : ''}" onclick="setLang('en')">EN</button>
+                <button data-lang="pt" class="${lang == 'pt' ? 'active' : ''}" onclick="setLang('pt')">PT</button><button data-lang="en" class="${lang == 'en' ? 'active' : ''}" onclick="setLang('en')">EN</button>
             </li>
         </ul>
     `
@@ -105,7 +108,7 @@ function CategoriesHtml(project){
 function ProjectHeaderHtml(project){
 
     let headerHtml = `
-            <hgroup>
+            <hgroup class="project-heading">
                 <h2>${project.title}</h2>
                 <time datetime="${project.year}">${project.year}</time>
             </hgroup>
@@ -478,7 +481,7 @@ function make(path){
                     console.log(err);
                 });
                 sidepanelImage.src = video.poster;
-                sidepanelImage.classList.remove('hidden');
+                sidepanelImage.classList.remove('hidden'); // TODO: maybe use toggle() instead??
                 sidepanelViewport.classList.add('hidden');
 
             });
