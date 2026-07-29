@@ -2,7 +2,7 @@
 import { works } from "../data/projects.js";
 import { dict } from "../data/dictionary.js";
 // Import Functionality
-import { makeDraggable } from "./draggable.js"; // i probably wont need that
+//import { makeDraggable } from "./draggable.js"; // i probably wont need that
 
 //* Filter Buffer :O
 let currentFilter = '';
@@ -100,13 +100,13 @@ function CategoriesHtml(project){
 }
 
 /** Returns the header HTML for the project, used in home (Project List) and project page. 
- * @param {*} project - a single project from the works object (projects.js)
+ * @param project - a single project from the works object (projects.js)
 */
 function ProjectHeaderHtml(project){
 
     let headerHtml = `
             <hgroup>
-                <h2>${project.title}${project.awards ? '*' : ''}</h2>
+                <h2>${project.title}</h2>
                 <time datetime="${project.year}">${project.year}</time>
             </hgroup>
             ${CategoriesHtml(project)}`;
@@ -159,7 +159,14 @@ function ProjectlHtml(project){
         let awardsHtml = '<ul class="awards" aria-label="Awards">';
         for (const award of project.awards){
             awardsHtml += `
-                <li>${award.name}</li>
+                <li>
+                    <hgroup>
+                        <h3>${award.name}</h3>
+                        <time datetime="${award.year}">${award.year}</time>
+                    </hgroup>
+                    <p>prize: ${award.prize}</p>
+                    <p>${award.categorie ? 'categorie: ' + award.categorie : ''}</p>
+                </li>
             `
         }
         awardsHtml += '</ul>'
@@ -177,7 +184,7 @@ function ProjectlHtml(project){
                     break;
                 case 'p5':
                     const message = entry.mobileMessage ? entry.mobileMessage[lang] :  dict.content["sketch-mobile-fallback"][lang];
-                    sidepanelFallbackHtml += `<p class="mobileOnly sketch-mobile-note">${message}</p>`
+                    sidepanelFallbackHtml += `<p class="mobileOnly sketch-mobile-note">${message} 🖳</p>`
                     break;
             }
         })
@@ -289,6 +296,7 @@ function ProjectListHtml(projects){
     return projectListHtml;
 }
 
+//* Make Functions // void
 
 function makeSidepanelNav(entries, index){
     // pega o nav do painel

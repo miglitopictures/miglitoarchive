@@ -334,7 +334,7 @@ export const works = {
             {
                 name: "Effect House Game Jam",
                 year: 2023,
-                categorie: "Gamemaster Award",
+                prize: "Gamemaster Award",
                 link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2024/graphic-design/stonecamp-2023-9e97e64b"
             },
         ],
