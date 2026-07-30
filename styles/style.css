@@ -557,6 +557,7 @@ body.flipped .sidepanel-nav {
    background-color: var(--main-color);
 
     width: var(--nav-height);
+    cursor: pointer;
 }
 
 .filters button:hover {

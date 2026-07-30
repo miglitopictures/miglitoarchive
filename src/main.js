@@ -132,6 +132,10 @@ function ProjectlHtml(project){
                 case "image":
                     contentHtml += `<img src="${content.url}"/>`;
                     break;
+                case "video":
+                    contentHtml += `<video src="${content.url}" loop
+                playsinline autoplay></video>`;
+                    break;
             }
         }
 
@@ -513,6 +517,7 @@ function make(path){
         
         // UPDATE DOM
         maincontent.innerHTML = ProjectlHtml(work);
+        maincontent.scrollTop = 0;
         // UPDATE META
 
         if (work.sidepanel){

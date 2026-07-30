@@ -179,6 +179,13 @@ export const works = {
                 link: "https://ladawards.org/2026/en/page/archivo-de-ganadores#/2024/graphic-design/stonecamp-2023-9e97e64b"
             },
         ],
+        
+        content:[
+            {type: "image", url: "https://res.cloudinary.com/dr5dbkh91/image/upload/v1785351773/12aa93188504087.65a83bd016845_mxz1dn.png"},
+            {type: "image", url: "https://res.cloudinary.com/dr5dbkh91/image/upload/v1785352214/stonecamp_graphic03_qytg1f.webp"},
+            {type: "image", url: "https://res.cloudinary.com/dr5dbkh91/image/upload/v1785353875/eac848188504087.65a6d9abd563b_xndmfl.jpg"},
+            {type: "video", url: "https://res.cloudinary.com/dr5dbkh91/video/upload/v1785353040/makingof1_hkyfru.mp4"},
+        ],
 
         credits:{
             "account management": ["Antonio Carvalho"],
@@ -370,8 +377,7 @@ export const works = {
         client: "Coca-Cola",
         categories: ["ar filter", "programming"],
 
-        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/image/upload/v1785355066/coca-cola-cover_rjdvva.webp",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
 
         credits:{
@@ -382,6 +388,13 @@ export const works = {
         },
 
         sidepanel: [
+            {
+                type: "about",
+                text: {
+                    en: "Hysterical ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in.",
+                    pt: "Histerica ipsum dolor sit amet consectetur, adipisicing elit. Illo, alias repellendus. Sit maxime nulla adipisci nihil iusto delectus magni aspernatur, doloribus veniam inventore quaerat perspiciatis ipsam dolorem dicta iure in."
+                }
+            },
             {
                 type: "about",
                 text: {
@@ -446,8 +459,7 @@ export const works = {
         client: "Proa",
         categories: ["graphic design", "poster"],
 
-        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/image/upload/w_1080/v1785350064/poster-principal-ilha-e-rua.jpg",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
 
         credits:{
@@ -480,8 +492,7 @@ export const works = {
         client: "Mariana Rocha e João Cortez",
         categories: ["graphic design", "album cover"],
 
-        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/image/upload/v1785349311/mandinga_capa_alt.jpg",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
 
         credits:{
@@ -516,8 +527,7 @@ export const works = {
         client: "João Cortez",
         categories: ["graphic design", "album cover"],
 
-        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/image/upload/v1785349686/JOCA_NERUDA_wttzvo.jpg",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
 
         credits:{
@@ -549,8 +559,7 @@ export const works = {
         client: "ANSIF (Articulção Nacional dos Servidores Indígenas da FUNAI)",
         categories: ["logo design"],
 
-        preview_thumb: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800,so_0/v1770769166/KIMURA_PREVIEW_hcy3wk.jpg",
-        preview_video: "https://res.cloudinary.com/dobmgp6ug/video/upload/f_auto,q_auto,w_800/v1770769166/KIMURA_PREVIEW_hcy3wk.mp4",
+        preview_thumb: "https://res.cloudinary.com/dr5dbkh91/image/upload/v1785350737/V3_SIGLA_COLORIDO_dugciy.jpg",
         preview_alt: "3D clay render of a runner about to cross a lonely finish line. The image is a wide angle, diagonaly simmetric, overhead shot of a hot minimalistic desetd. The runner, frozen mid-run, wears a red headband, white shirt and green shorts.",
 
         credits:{
